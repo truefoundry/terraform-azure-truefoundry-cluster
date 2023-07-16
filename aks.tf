@@ -11,29 +11,69 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
   principal_id         = azurerm_user_assigned_identity.cluster.principal_id
 }
 
-resource "azurerm_kubernetes_cluster" "cluster" {
-  name                    = var.name
-  location                = var.location
-  resource_group_name     = var.resource_group_name
-  private_cluster_enabled = var.private_cluster_enabled
-  # Additional node pools can be added separately - https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster_node_pool
-  default_node_pool {
-    name                = "default"
-    vm_size             = "Standard_D2_v2"
-    enable_auto_scaling = true
-    max_count           = 10
-    min_count           = 2
-    os_disk_size_gb     = 40
-    vnet_subnet_id      = var.subnet_id
+module "aks" {
+  source                    = "Azure/aks/azurerm"
+  version                   = "7.2.0"
+  resource_group_name       = var.resource_group_name
+  cluster_name              = var.name
+  location                  = var.location
+  prefix                    = "tfy"
+  workload_identity_enabled = var.workload_identity_enabled
+
+  # agent configuration
+  # agents_availability_zones = []
+  agents_count = 1
+  agents_labels = {
+    "truefoundry" : "essential"
   }
-  oidc_issuer_enabled    = true
-  local_account_disabled = false
-  dns_prefix             = var.name
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.cluster.id]
-  }
-  network_profile {
-    network_plugin = "kubenet"
-  }
+  agents_max_count = 1
+  agents_min_count = 1
+  agents_pool_name = "initial"
+  agents_size      = var.intial_node_pool_instance_type
+  agents_tags      = local.tags
+
+  # autoscaler configuration
+  auto_scaler_profile_enabled                          = true
+  auto_scaler_profile_expander                         = "random"
+  auto_scaler_profile_max_node_provisioning_time       = "5m"
+  auto_scaler_profile_max_unready_nodes                = 0
+  auto_scaler_profile_scale_down_delay_after_add       = "5m"
+  auto_scaler_profile_scale_down_delay_after_delete    = "30s"
+  auto_scaler_profile_scale_down_unneeded              = "1m"
+  auto_scaler_profile_scale_down_unready               = "5m"
+  auto_scaler_profile_scale_down_utilization_threshold = "0.3"
+
+  # cluster level configurations
+  api_server_authorized_ip_ranges            = var.allowed_ip_ranges
+  create_role_assignment_network_contributor = false
+  enable_auto_scaling                        = true
+  enable_host_encryption                     = true
+  identity_ids                               = [azurerm_user_assigned_identity.cluster.id]
+  identity_type                              = "UserAssigned"
+  kubernetes_version                         = var.kubernetes_version
+
+  # network configuration
+  network_plugin             = var.network_plugin
+  vnet_subnet_id             = var.subnet_id
+  net_profile_dns_service_ip = var.dns_ip
+  net_profile_service_cidr   = var.server_cidr
+  net_profile_pod_cidr       = var.pod_cidr
+  # net_profile_docker_bridge_cidr = "10.244.0.10"
+
+  node_pools = local.node_pools
+
+  oidc_issuer_enabled = var.oidc_issuer_enabled
+  os_disk_size_gb     = var.disk_size
+
+  # makes the initial node pool have a taint `CriticalAddonsOnly=true:NoSchedule`
+  # helpful in scheduling important workloads 
+  only_critical_addons_enabled = true
+
+  private_cluster_enabled      = var.private_cluster_enabled
+
+  # rbac 
+  rbac_aad                          = false
+  role_based_access_control_enabled = false
+
+  tags = local.tags
 }
