@@ -22,12 +22,12 @@ module "aks" {
 
   # agent configuration
   # agents_availability_zones = []
-  agents_count = 1
   agents_labels = {
     "truefoundry" : "essential"
   }
-  agents_max_count = 1
-  agents_min_count = 1
+  agents_count = local.intial_node_pool_instance_count
+  agents_max_count = local.intial_node_pool_instance_count
+  agents_min_count = local.intial_node_pool_instance_count
   agents_pool_name = "initial"
   agents_size      = var.intial_node_pool_instance_type
   agents_tags      = local.tags

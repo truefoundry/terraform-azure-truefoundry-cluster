@@ -32,7 +32,7 @@ variable "intial_node_pool_instance_type" {
 
 variable "intial_node_pool_spot_instance_type" {
   description = "Instance size of the initial node pool"
-  default     = "Standard_D2s_v5"
+  default     = "Standard_D4s_v5"
   type        = string
 }
 
@@ -40,6 +40,12 @@ variable "workload_identity_enabled" {
   description = "enable workload identity in the cluster"
   default     = true
   type        = bool
+}
+
+variable "control_plane" {
+  description = "whether the cluster is control plane"
+  type = bool
+  
 }
 ################################################################################
 # Network
