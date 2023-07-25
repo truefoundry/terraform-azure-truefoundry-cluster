@@ -21,21 +21,21 @@ output "cluster_name" {
 
 output "cluster_identity" {
   description = "The `azurerm_kubernetes_cluster`'s `identity` block."
-  value = module.aks.cluster_identity
+  value       = module.aks.cluster_identity
 }
 
 output "cluster_host" {
   description = "The `host` in the `azurerm_kubernetes_cluster`'s `kube_config` block. The Kubernetes cluster server host."
-  value = module.aks.host
-  sensitive = true
+  value       = module.aks.host
+  sensitive   = true
 }
 
 output "cluster_networking_profile" {
   description = "Networking profile of the cluster"
-  value = module.aks.network_profile
+  value       = module.aks.network_profile
 }
 
 output "cluster_oidc_issuer_url" {
   description = "OIDC issuer url of the cluster"
-  value = module.aks.oidc_issuer_url
+  value       = module.aks.oidc_issuer_url
 }

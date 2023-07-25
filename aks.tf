@@ -25,7 +25,7 @@ module "aks" {
   agents_labels = {
     "truefoundry" : "essential"
   }
-  agents_count = local.intial_node_pool_instance_count
+  agents_count     = local.intial_node_pool_instance_count
   agents_max_count = local.intial_node_pool_instance_count
   agents_min_count = local.intial_node_pool_instance_count
   agents_pool_name = "initial"
@@ -69,7 +69,7 @@ module "aks" {
   # helpful in scheduling important workloads 
   only_critical_addons_enabled = true
 
-  private_cluster_enabled      = var.private_cluster_enabled
+  private_cluster_enabled = var.private_cluster_enabled
 
   # rbac 
   rbac_aad                          = false

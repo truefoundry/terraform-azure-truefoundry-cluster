@@ -44,8 +44,8 @@ variable "workload_identity_enabled" {
 
 variable "control_plane" {
   description = "whether the cluster is control plane"
-  type = bool
-  
+  type        = bool
+
 }
 ################################################################################
 # Network
