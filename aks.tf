@@ -35,12 +35,13 @@ module "aks" {
   # autoscaler configuration
   auto_scaler_profile_enabled                          = true
   auto_scaler_profile_expander                         = "random"
+  auto_scaler_profile_max_graceful_termination_sec     = "180"
   auto_scaler_profile_max_node_provisioning_time       = "5m"
   auto_scaler_profile_max_unready_nodes                = 0
-  auto_scaler_profile_scale_down_delay_after_add       = "5m"
+  auto_scaler_profile_scale_down_delay_after_add       = "2m"
   auto_scaler_profile_scale_down_delay_after_delete    = "30s"
   auto_scaler_profile_scale_down_unneeded              = "1m"
-  auto_scaler_profile_scale_down_unready               = "5m"
+  auto_scaler_profile_scale_down_unready               = "2m"
   auto_scaler_profile_scale_down_utilization_threshold = "0.3"
 
   # cluster level configurations
