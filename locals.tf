@@ -7,7 +7,8 @@ locals {
     },
     var.tags
   )
-  intial_node_pool_instance_count = var.control_plane ? 2 : 1
+  intial_node_pool_min_count = var.control_plane ? 2 : 1
+  intial_node_pool_max_count = var.control_plane ? 3 : 2
   node_pools = {
     spot = {
       name            = "spotpool"

@@ -25,9 +25,9 @@ module "aks" {
   agents_labels = {
     "truefoundry" : "essential"
   }
-  agents_count     = local.intial_node_pool_instance_count
-  agents_max_count = local.intial_node_pool_instance_count
-  agents_min_count = local.intial_node_pool_instance_count
+  agents_count     = local.intial_node_pool_min_count
+  agents_max_count = local.intial_node_pool_max_count
+  agents_min_count = local.intial_node_pool_min_count
   agents_pool_name = "initial"
   agents_size      = var.intial_node_pool_instance_type
   agents_tags      = local.tags
@@ -35,12 +35,13 @@ module "aks" {
   # autoscaler configuration
   auto_scaler_profile_enabled                          = true
   auto_scaler_profile_expander                         = "random"
+  auto_scaler_profile_max_graceful_termination_sec     = "180"
   auto_scaler_profile_max_node_provisioning_time       = "5m"
   auto_scaler_profile_max_unready_nodes                = 0
-  auto_scaler_profile_scale_down_delay_after_add       = "5m"
+  auto_scaler_profile_scale_down_delay_after_add       = "2m"
   auto_scaler_profile_scale_down_delay_after_delete    = "30s"
   auto_scaler_profile_scale_down_unneeded              = "1m"
-  auto_scaler_profile_scale_down_unready               = "5m"
+  auto_scaler_profile_scale_down_unready               = "2m"
   auto_scaler_profile_scale_down_utilization_threshold = "0.3"
 
   # cluster level configurations
