@@ -81,7 +81,7 @@ variable "service_cidr" {
 
 variable "dns_ip" {
   description = "IP from service CIDR used for internal DNS"
-  default     = "10.0.0.10"
+  default     = "10.255.0.10"
   type        = string
 }
 
