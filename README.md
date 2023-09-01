@@ -46,7 +46,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_pod_cidr"></a> [pod\_cidr](#input\_pod\_cidr) | CIDR of the pod | `string` | `"10.244.0.0/16"` | no |
 | <a name="input_private_cluster_enabled"></a> [private\_cluster\_enabled](#input\_private\_cluster\_enabled) | Private cluster | `bool` | `false` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group | `string` | n/a | yes |
-| <a name="input_service_cidr"></a> [service\_cidr](#input\_service\_cidr) | service CIDR | `string` | `"10.0.0.0/16"` | no |
+| <a name="input_service_cidr"></a> [service\_cidr](#input\_service\_cidr) | service CIDR | `string` | `"10.255.0.0/16"` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet Id for the cluster. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_vnet_id"></a> [vnet\_id](#input\_vnet\_id) | Vnet ID for the cluster | `string` | n/a | yes |
