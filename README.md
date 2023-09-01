@@ -35,7 +35,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_allowed_ip_ranges"></a> [allowed\_ip\_ranges](#input\_allowed\_ip\_ranges) | allowed IP ranges to connect to the cluster | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | whether the cluster is control plane | `bool` | n/a | yes |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | disk size of the initial node pool in GB | `string` | `"100"` | no |
-| <a name="input_dns_ip"></a> [dns\_ip](#input\_dns\_ip) | IP from service CIDR used for internal DNS | `string` | `"10.0.0.10"` | no |
+| <a name="input_dns_ip"></a> [dns\_ip](#input\_dns\_ip) | IP from service CIDR used for internal DNS | `string` | `"10.255.0.10"` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
 | <a name="input_intial_node_pool_spot_instance_type"></a> [intial\_node\_pool\_spot\_instance\_type](#input\_intial\_node\_pool\_spot\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | version of the kubernetes engine | `string` | `"1.26"` | no |
