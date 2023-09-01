@@ -57,7 +57,7 @@ module "aks" {
   network_plugin             = var.network_plugin
   vnet_subnet_id             = var.subnet_id
   net_profile_dns_service_ip = var.dns_ip
-  net_profile_service_cidr   = var.server_cidr
+  net_profile_service_cidr   = var.service_cidr
   net_profile_pod_cidr       = var.pod_cidr
   # net_profile_docker_bridge_cidr = "10.244.0.10"
 

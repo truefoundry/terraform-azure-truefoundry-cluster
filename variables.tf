@@ -73,7 +73,7 @@ variable "pod_cidr" {
   type        = string
 }
 
-variable "server_cidr" {
+variable "service_cidr" {
   description = "service CIDR"
   default     = "10.0.0.0/16"
   type        = string
