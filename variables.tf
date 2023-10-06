@@ -7,19 +7,19 @@ variable "name" {
   type        = string
 }
 variable "kubernetes_version" {
-  description = "version of the kubernetes engine"
+  description = "Version of the kubernetes engine"
   default     = "1.26"
   type        = string
 }
 
 variable "oidc_issuer_enabled" {
-  description = "enable OIDC for the cluster"
+  description = "Enable OIDC for the cluster"
   default     = true
   type        = bool
 }
 
 variable "disk_size" {
-  description = "disk size of the initial node pool in GB"
+  description = "Disk size of the initial node pool in GB"
   default     = "100"
   type        = string
 }
@@ -37,15 +37,50 @@ variable "intial_node_pool_spot_instance_type" {
 }
 
 variable "workload_identity_enabled" {
-  description = "enable workload identity in the cluster"
+  description = "Enable workload identity in the cluster"
   default     = true
   type        = bool
 }
 
 variable "control_plane" {
-  description = "whether the cluster is control plane"
+  description = "Whether the cluster is control plane"
   type        = bool
 
+}
+
+variable "enable_storage_profile" {
+  description = "Enable storage profile for the cluster. If disabled `enable_blob_driver`, `enable_file_driver`, `enable_disk_driver` and `enable_snapshot_controller` will have no impact"
+  type        = bool
+  default     = true
+}
+
+variable "enable_blob_driver" {
+  description = "Enable blob storage provider"
+  type        = bool
+  default     = true
+}
+
+variable "enable_file_driver" {
+  description = "Enable file storage provider"
+  type        = bool
+  default     = true
+}
+
+variable "enable_disk_driver" {
+  description = "Enable disk storage provider"
+  type        = bool
+  default     = true
+}
+
+variable "disk_driver_version" {
+  description = "Version of disk driver. Supported values `v1` and `v2`"
+  type        = string
+  default     = "v1"
+}
+variable "enable_snapshot_controller" {
+  description = "Enable snapshot controller"
+  type        = bool
+  default     = true
 }
 ################################################################################
 # Network
@@ -57,24 +92,24 @@ variable "vnet_id" {
 }
 
 variable "subnet_id" {
-  description = "Subnet Id for the cluster."
+  description = "Subnet Id for the cluster"
   type        = string
 }
 
 variable "network_plugin" {
-  description = "network plugin to use for cluster"
+  description = "Network plugin to use for cluster"
   type        = string
   default     = "kubenet"
 }
 
 variable "pod_cidr" {
-  description = "CIDR of the pod"
+  description = "CIDR of the pod in cluster"
   default     = "10.244.0.0/16"
   type        = string
 }
 
 variable "service_cidr" {
-  description = "service CIDR"
+  description = "CIDR of the services in cluster"
   default     = "10.255.0.0/16"
   type        = string
 }
@@ -86,7 +121,7 @@ variable "dns_ip" {
 }
 
 variable "allowed_ip_ranges" {
-  description = "allowed IP ranges to connect to the cluster"
+  description = "Allowed IP ranges to connect to the cluster"
   default     = ["0.0.0.0/0"]
   type        = list(string)
 }
