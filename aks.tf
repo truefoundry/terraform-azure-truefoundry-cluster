@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
 
 module "aks" {
   source                    = "Azure/aks/azurerm"
-  version                   = "7.2.0"
+  version                   = "7.4.0"
   resource_group_name       = var.resource_group_name
   cluster_name              = var.name
   location                  = var.location
@@ -52,6 +52,14 @@ module "aks" {
   identity_ids                               = [azurerm_user_assigned_identity.cluster.id]
   identity_type                              = "UserAssigned"
   kubernetes_version                         = var.kubernetes_version
+
+  # storage
+  storage_profile_blob_driver_enabled         = var.enable_blob_driver
+  storage_profile_disk_driver_enabled         = var.enable_disk_driver
+  storage_profile_disk_driver_version         = var.disk_driver_version
+  storage_profile_file_driver_enabled         = var.enable_file_driver
+  storage_profile_snapshot_controller_enabled = var.enable_snapshot_controller
+  storage_profile_enabled                     = var.enable_storage_profile
 
   # network configuration
   network_plugin             = var.network_plugin
