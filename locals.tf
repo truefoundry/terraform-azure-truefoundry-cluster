@@ -25,6 +25,7 @@ locals {
       enable_host_encryption  = false
       enable_node_public_ip   = false
       eviction_policy         = "Delete"
+      orchestrator_version    = var.kubernetes_version
       node_taints = [
         "kubernetes.azure.com/scalesetpriority=spot:NoSchedule"
       ]

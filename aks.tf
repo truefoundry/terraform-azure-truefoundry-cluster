@@ -25,12 +25,13 @@ module "aks" {
   agents_labels = {
     "truefoundry" : "essential"
   }
-  agents_count     = local.intial_node_pool_min_count
-  agents_max_count = local.intial_node_pool_max_count
-  agents_min_count = local.intial_node_pool_min_count
-  agents_pool_name = "initial"
-  agents_size      = var.intial_node_pool_instance_type
-  agents_tags      = local.tags
+  agents_count         = local.intial_node_pool_min_count
+  agents_max_count     = local.intial_node_pool_max_count
+  agents_min_count     = local.intial_node_pool_min_count
+  agents_pool_name     = "initial"
+  agents_size          = var.intial_node_pool_instance_type
+  agents_tags          = local.tags
+  orchestrator_version = var.kubernetes_version
 
   # autoscaler configuration
   auto_scaler_profile_enabled                          = true

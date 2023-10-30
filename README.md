@@ -44,7 +44,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_enable_storage_profile"></a> [enable\_storage\_profile](#input\_enable\_storage\_profile) | Enable storage profile for the cluster. If disabled `enable_blob_driver`, `enable_file_driver`, `enable_disk_driver` and `enable_snapshot_controller` will have no impact | `bool` | `true` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
 | <a name="input_intial_node_pool_spot_instance_type"></a> [intial\_node\_pool\_spot\_instance\_type](#input\_intial\_node\_pool\_spot\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.26"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.27"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |

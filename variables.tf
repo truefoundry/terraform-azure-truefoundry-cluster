@@ -8,7 +8,7 @@ variable "name" {
 }
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
-  default     = "1.26"
+  default     = "1.27"
   type        = string
 }
 
