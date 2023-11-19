@@ -19,7 +19,7 @@ Truefoundry Azure Cluster Module
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_aks"></a> [aks](#module\_aks) | Azure/aks/azurerm | 7.4.0 |
+| <a name="module_aks"></a> [aks](#module\_aks) | Azure/aks/azurerm | 7.5.0 |
 
 ## Resources
 
