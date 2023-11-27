@@ -12,13 +12,14 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
 }
 
 module "aks" {
-  source                    = "Azure/aks/azurerm"
-  version                   = "7.4.0"
-  resource_group_name       = var.resource_group_name
-  cluster_name              = var.name
-  location                  = var.location
-  prefix                    = "tfy"
-  workload_identity_enabled = var.workload_identity_enabled
+  source                      = "Azure/aks/azurerm"
+  version                     = "7.5.0"
+  resource_group_name         = var.resource_group_name
+  cluster_name                = var.name
+  location                    = var.location
+  prefix                      = "tfy"
+  workload_identity_enabled   = var.workload_identity_enabled
+  temporary_name_for_rotation = "tmpdefault"
 
   # agent configuration
   # agents_availability_zones = []
