@@ -7,13 +7,13 @@ Truefoundry Azure Cluster Module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.4 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.69.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.89.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.69.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.89.0 |
 
 ## Modules
 
@@ -25,8 +25,8 @@ Truefoundry Azure Cluster Module
 
 | Name | Type |
 |------|------|
-| [azurerm_role_assignment.network_contributor_cluster](https://registry.terraform.io/providers/hashicorp/azurerm/3.69.0/docs/resources/role_assignment) | resource |
-| [azurerm_user_assigned_identity.cluster](https://registry.terraform.io/providers/hashicorp/azurerm/3.69.0/docs/resources/user_assigned_identity) | resource |
+| [azurerm_role_assignment.network_contributor_cluster](https://registry.terraform.io/providers/hashicorp/azurerm/3.89.0/docs/resources/role_assignment) | resource |
+| [azurerm_user_assigned_identity.cluster](https://registry.terraform.io/providers/hashicorp/azurerm/3.89.0/docs/resources/user_assigned_identity) | resource |
 
 ## Inputs
 
@@ -44,11 +44,12 @@ Truefoundry Azure Cluster Module
 | <a name="input_enable_storage_profile"></a> [enable\_storage\_profile](#input\_enable\_storage\_profile) | Enable storage profile for the cluster. If disabled `enable_blob_driver`, `enable_file_driver`, `enable_disk_driver` and `enable_snapshot_controller` will have no impact | `bool` | `true` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
 | <a name="input_intial_node_pool_spot_instance_type"></a> [intial\_node\_pool\_spot\_instance\_type](#input\_intial\_node\_pool\_spot\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.27"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.28"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |
 | <a name="input_oidc_issuer_enabled"></a> [oidc\_issuer\_enabled](#input\_oidc\_issuer\_enabled) | Enable OIDC for the cluster | `bool` | `true` | no |
+| <a name="input_orchestrator_version"></a> [orchestrator\_version](#input\_orchestrator\_version) | Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes\_version until passed explicitly | `string` | `"1.28"` | no |
 | <a name="input_pod_cidr"></a> [pod\_cidr](#input\_pod\_cidr) | CIDR of the pod in cluster | `string` | `"10.244.0.0/16"` | no |
 | <a name="input_private_cluster_enabled"></a> [private\_cluster\_enabled](#input\_private\_cluster\_enabled) | Private cluster | `bool` | `false` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group | `string` | n/a | yes |
