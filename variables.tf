@@ -8,9 +8,15 @@ variable "name" {
 }
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
-  default     = "1.27"
+  default     = "1.28"
   type        = string
 }
+variable "orchestrator_version" {
+  description = "Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes_version until passed explicitly"
+  type        = string
+  default     = "1.28"
+}
+
 
 variable "oidc_issuer_enabled" {
   description = "Enable OIDC for the cluster"
