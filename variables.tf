@@ -42,6 +42,12 @@ variable "intial_node_pool_spot_instance_type" {
   type        = string
 }
 
+variable "initial_node_pool_max_surge" {
+  description = "Max surge in percentage for the intial node pool"
+  type        = string
+  default     = "10"
+}
+
 variable "workload_identity_enabled" {
   description = "Enable workload identity in the cluster"
   default     = true
@@ -83,11 +89,19 @@ variable "disk_driver_version" {
   type        = string
   default     = "v1"
 }
+
 variable "enable_snapshot_controller" {
   description = "Enable snapshot controller"
   type        = bool
   default     = true
 }
+
+variable "max_pods_per_node" {
+  description = "Max pods per node"
+  type        = number
+  default     = 32
+}
+
 ################################################################################
 # Network
 ################################################################################

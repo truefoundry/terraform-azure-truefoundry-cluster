@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
 
 module "aks" {
   source                      = "Azure/aks/azurerm"
-  version                     = "7.5.0"
+  version                     = "8.0.0"
   resource_group_name         = var.resource_group_name
   cluster_name                = var.name
   location                    = var.location
@@ -26,12 +26,14 @@ module "aks" {
   agents_labels = {
     "truefoundry" : "essential"
   }
-  agents_count     = local.intial_node_pool_min_count
-  agents_max_count = local.intial_node_pool_max_count
-  agents_min_count = local.intial_node_pool_min_count
-  agents_pool_name = "initial"
-  agents_size      = var.intial_node_pool_instance_type
-  agents_tags      = local.tags
+  agents_count          = local.intial_node_pool_min_count
+  agents_max_count      = local.intial_node_pool_max_count
+  agents_min_count      = local.intial_node_pool_min_count
+  agents_pool_name      = "initial"
+  agents_size           = var.intial_node_pool_instance_type
+  agents_max_pods       = var.max_pods_per_node
+  agents_pool_max_surge = var.initial_node_pool_max_surge
+  agents_tags           = local.tags
 
   orchestrator_version = coalesce(var.orchestrator_version, var.kubernetes_version)
 
