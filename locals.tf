@@ -21,50 +21,50 @@ locals {
     }
   ]
   gpupools = [
-    {
+    var.enable_A100_node_pools ? {
       name    = "a100"
       vm_size = "Standard_NC24ads_A100_v4"
-    },
-    {
+    } : null,
+    var.enable_A100_node_pools ? {
       name    = "a100x2"
       vm_size = "Standard_NC48ads_A100_v4"
-    },
-    {
+    } : null,
+    var.enable_A100_node_pools ? {
       name    = "a100x4"
       vm_size = "Standard_NC96ads_A100_v4"
-    },
-    {
+    } : null,
+    var.enable_A10_node_pools ? {
       name    = "a10"
       vm_size = "Standard_NV6ads_A10_v5"
-    },
-    {
+    } : null,
+    var.enable_A10_node_pools ? {
       name    = "a10x2"
       vm_size = "Standard_NV12ads_A10_v5"
-    },
-    {
+    } : null,
+    var.enable_A10_node_pools ? {
       name    = "a10x3"
       vm_size = "Standard_NV18ads_A10_v5"
-    },
-    {
+    } : null,
+    var.enable_A10_node_pools ? {
       name    = "a10x6"
       vm_size = "Standard_NV36ads_A10_v5"
-    },
-    {
+    } : null,
+    var.enable_T4_node_pools ? {
       name    = "t4"
       vm_size = "Standard_NC4as_T4_v3"
-    },
-    {
+    } : null,
+    var.enable_T4_node_pools ? {
       name    = "t4x2"
       vm_size = "Standard_NC8as_T4_v3"
-    },
-    {
+    } : null,
+    var.enable_T4_node_pools ? {
       name    = "t4x4"
       vm_size = "Standard_NC16as_T4_v3"
-    },
-    {
+    } : null,
+    var.enable_T4_node_pools ? {
       name    = "t4x16"
       vm_size = "Standard_NC64as_T4_v3"
-    }
+    } : null
   ]
   node_pools = merge({ for k, v in local.cpupools : "${v["name"]}sp" => {
     name                    = "${v["name"]}sp"
@@ -110,7 +110,7 @@ locals {
       zones          = []
       vnet_subnet_id = var.subnet_id
       max_pods       = var.max_pods_per_node
-    } },
+    } if v != null },
     { for k, v in local.gpupools : "${v["name"]}" => {
       name                    = "${v["name"]}"
       node_count              = 0
@@ -131,5 +131,5 @@ locals {
       zones          = []
       vnet_subnet_id = var.subnet_id
       max_pods       = var.max_pods_per_node
-  } })
+  } if v != null })
 }

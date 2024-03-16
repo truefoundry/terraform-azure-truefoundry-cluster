@@ -36,11 +36,11 @@ variable "intial_node_pool_instance_type" {
   type        = string
 }
 
-variable "intial_node_pool_spot_instance_type" {
-  description = "Instance size of the initial node pool"
-  default     = "Standard_D4s_v5"
-  type        = string
-}
+# variable "intial_node_pool_spot_instance_type" {
+#   description = "Instance size of the initial node pool"
+#   default     = "Standard_D4s_v5"
+#   type        = string
+# }
 
 variable "initial_node_pool_max_surge" {
   description = "Max surge in percentage for the intial node pool"
@@ -49,20 +49,20 @@ variable "initial_node_pool_max_surge" {
 }
 variable "enable_A10_node_pools" {
   description = "Enable A10 node pools spot/on-demand"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "enable_A100_node_pools" {
-    description = "Enable A100 node pools spot/on-demand"
-  type = bool
-  default = true
+  description = "Enable A100 node pools spot/on-demand"
+  type        = bool
+  default     = true
 }
 
 variable "enable_T4_node_pools" {
-    description = "Enable T4 node pools spot/on-demand"
-  type = bool
-  default = true
+  description = "Enable T4 node pools spot/on-demand"
+  type        = bool
+  default     = true
 }
 
 variable "workload_identity_enabled" {
