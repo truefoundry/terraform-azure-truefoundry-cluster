@@ -37,6 +37,9 @@ Truefoundry Azure Cluster Module
 | <a name="input_disk_driver_version"></a> [disk\_driver\_version](#input\_disk\_driver\_version) | Version of disk driver. Supported values `v1` and `v2` | `string` | `"v1"` | no |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | Disk size of the initial node pool in GB | `string` | `"100"` | no |
 | <a name="input_dns_ip"></a> [dns\_ip](#input\_dns\_ip) | IP from service CIDR used for internal DNS | `string` | `"10.255.0.10"` | no |
+| <a name="input_enable_A100_node_pools"></a> [enable\_A100\_node\_pools](#input\_enable\_A100\_node\_pools) | Enable A100 node pools spot/on-demand | `bool` | `true` | no |
+| <a name="input_enable_A10_node_pools"></a> [enable\_A10\_node\_pools](#input\_enable\_A10\_node\_pools) | Enable A10 node pools spot/on-demand | `bool` | `true` | no |
+| <a name="input_enable_T4_node_pools"></a> [enable\_T4\_node\_pools](#input\_enable\_T4\_node\_pools) | Enable T4 node pools spot/on-demand | `bool` | `true` | no |
 | <a name="input_enable_blob_driver"></a> [enable\_blob\_driver](#input\_enable\_blob\_driver) | Enable blob storage provider | `bool` | `true` | no |
 | <a name="input_enable_disk_driver"></a> [enable\_disk\_driver](#input\_enable\_disk\_driver) | Enable disk storage provider | `bool` | `true` | no |
 | <a name="input_enable_file_driver"></a> [enable\_file\_driver](#input\_enable\_file\_driver) | Enable file storage provider | `bool` | `true` | no |
@@ -44,7 +47,6 @@ Truefoundry Azure Cluster Module
 | <a name="input_enable_storage_profile"></a> [enable\_storage\_profile](#input\_enable\_storage\_profile) | Enable storage profile for the cluster. If disabled `enable_blob_driver`, `enable_file_driver`, `enable_disk_driver` and `enable_snapshot_controller` will have no impact | `bool` | `true` | no |
 | <a name="input_initial_node_pool_max_surge"></a> [initial\_node\_pool\_max\_surge](#input\_initial\_node\_pool\_max\_surge) | Max surge in percentage for the intial node pool | `string` | `"10"` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
-| <a name="input_intial_node_pool_spot_instance_type"></a> [intial\_node\_pool\_spot\_instance\_type](#input\_intial\_node\_pool\_spot\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.28"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Max pods per node | `number` | `32` | no |
