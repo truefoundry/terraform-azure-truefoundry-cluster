@@ -47,6 +47,23 @@ variable "initial_node_pool_max_surge" {
   type        = string
   default     = "10"
 }
+variable "enable_A10_node_pools" {
+  description = "Enable A10 node pools spot/on-demand"
+  type = bool
+  default = true
+}
+
+variable "enable_A100_node_pools" {
+    description = "Enable A100 node pools spot/on-demand"
+  type = bool
+  default = true
+}
+
+variable "enable_T4_node_pools" {
+    description = "Enable T4 node pools spot/on-demand"
+  type = bool
+  default = true
+}
 
 variable "workload_identity_enabled" {
   description = "Enable workload identity in the cluster"
