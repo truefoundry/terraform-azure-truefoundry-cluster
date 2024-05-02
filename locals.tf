@@ -69,7 +69,7 @@ locals {
   node_pools = merge({ for k, v in local.cpupools : "${v["name"]}sp" => {
     name                    = "${v["name"]}sp"
     node_count              = 0
-    max_count               = 20
+    max_count               = 10
     min_count               = 0
     os_disk_size_gb         = 100
     priority                = "Spot"
@@ -91,7 +91,7 @@ locals {
     { for k, v in local.gpupools : "${v["name"]}sp" => {
       name                    = "${v["name"]}sp"
       node_count              = 0
-      max_count               = 20
+      max_count               = 5
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Spot"
@@ -114,7 +114,7 @@ locals {
     { for k, v in local.gpupools : "${v["name"]}" => {
       name                    = "${v["name"]}"
       node_count              = 0
-      max_count               = 20
+      max_count               = 5
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
