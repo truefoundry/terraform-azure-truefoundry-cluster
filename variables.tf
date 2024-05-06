@@ -17,6 +17,11 @@ variable "orchestrator_version" {
   default     = "1.28"
 }
 
+variable "log_analytics_workspace_enabled" {
+  description = "value to enable log analytics workspace"
+  type        = bool
+  default     = true
+}
 
 variable "oidc_issuer_enabled" {
   description = "Enable OIDC for the cluster"
@@ -30,39 +35,69 @@ variable "disk_size" {
   type        = string
 }
 
+################################################################################
+# Initial Nodepool configurations
+################################################################################
+
+variable "initial_node_pool_name" {
+  description = "Name of the initial node pool"
+  default     = "initial"
+  type        = string
+}
+
 variable "intial_node_pool_instance_type" {
   description = "Instance size of the initial node pool"
   default     = "Standard_D2s_v5"
   type        = string
 }
 
-# variable "intial_node_pool_spot_instance_type" {
-#   description = "Instance size of the initial node pool"
-#   default     = "Standard_D4s_v5"
-#   type        = string
-# }
-
 variable "initial_node_pool_max_surge" {
   description = "Max surge in percentage for the intial node pool"
   type        = string
   default     = "10"
 }
-variable "enable_A10_node_pools" {
-  description = "Enable A10 node pools spot/on-demand"
-  type        = bool
-  default     = true
+
+variable "initial_node_pool_max_count" {
+  description = "Max count in the initial node pool"
+  type        = number
+  default     = 2
 }
 
-variable "enable_A100_node_pools" {
-  description = "Enable A100 node pools spot/on-demand"
-  type        = bool
-  default     = true
+variable "initial_node_pool_min_count" {
+  description = "Min count in the initial node pool"
+  type        = number
+  default     = 1
 }
 
-variable "enable_T4_node_pools" {
-  description = "Enable T4 node pools spot/on-demand"
-  type        = bool
-  default     = true
+################################################################################
+# CPU pool configurations
+################################################################################
+
+variable "cpu_pools" {
+  description = "CPU pools to be attached"
+  type = list(object({
+    name                  = string
+    instance_type         = string
+    max_count             = optional(number, 2)
+    enable_spot_pool      = optional(bool, true)
+    enable_on_demand_pool = optional(bool, true)
+  }))
+}
+
+
+################################################################################
+# GPU pool configurations
+################################################################################
+
+variable "gpu_pools" {
+  description = "GPU pools to be attached"
+  type = list(object({
+    name                  = string
+    instance_type         = string
+    max_count             = optional(number, 2)
+    enable_spot_pool      = optional(bool, true)
+    enable_on_demand_pool = optional(bool, true)
+  }))
 }
 
 variable "workload_identity_enabled" {
@@ -74,6 +109,12 @@ variable "workload_identity_enabled" {
 variable "control_plane" {
   description = "Whether the cluster is control plane"
   type        = bool
+}
+
+variable "control_plane_instance_type" {
+  description = "Whether the cluster is control plane"
+  default     = "Standard_D2s_v5"
+  type        = string
 
 }
 
