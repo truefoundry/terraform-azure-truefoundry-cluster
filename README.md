@@ -34,21 +34,25 @@ Truefoundry Azure Cluster Module
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_ip_ranges"></a> [allowed\_ip\_ranges](#input\_allowed\_ip\_ranges) | Allowed IP ranges to connect to the cluster | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Whether the cluster is control plane | `bool` | n/a | yes |
+| <a name="input_control_plane_instance_type"></a> [control\_plane\_instance\_type](#input\_control\_plane\_instance\_type) | Whether the cluster is control plane | `string` | `"Standard_D2s_v5"` | no |
+| <a name="input_cpu_pools"></a> [cpu\_pools](#input\_cpu\_pools) | CPU pools to be attached | <pre>list(object({<br>    name                  = string<br>    instance_type         = string<br>    max_count             = optional(number, 2)<br>    enable_spot_pool      = optional(bool, true)<br>    enable_on_demand_pool = optional(bool, true)<br>  }))</pre> | n/a | yes |
 | <a name="input_disk_driver_version"></a> [disk\_driver\_version](#input\_disk\_driver\_version) | Version of disk driver. Supported values `v1` and `v2` | `string` | `"v1"` | no |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | Disk size of the initial node pool in GB | `string` | `"100"` | no |
 | <a name="input_dns_ip"></a> [dns\_ip](#input\_dns\_ip) | IP from service CIDR used for internal DNS | `string` | `"10.255.0.10"` | no |
-| <a name="input_enable_A100_node_pools"></a> [enable\_A100\_node\_pools](#input\_enable\_A100\_node\_pools) | Enable A100 node pools spot/on-demand | `bool` | `true` | no |
-| <a name="input_enable_A10_node_pools"></a> [enable\_A10\_node\_pools](#input\_enable\_A10\_node\_pools) | Enable A10 node pools spot/on-demand | `bool` | `true` | no |
-| <a name="input_enable_T4_node_pools"></a> [enable\_T4\_node\_pools](#input\_enable\_T4\_node\_pools) | Enable T4 node pools spot/on-demand | `bool` | `true` | no |
 | <a name="input_enable_blob_driver"></a> [enable\_blob\_driver](#input\_enable\_blob\_driver) | Enable blob storage provider | `bool` | `true` | no |
 | <a name="input_enable_disk_driver"></a> [enable\_disk\_driver](#input\_enable\_disk\_driver) | Enable disk storage provider | `bool` | `true` | no |
 | <a name="input_enable_file_driver"></a> [enable\_file\_driver](#input\_enable\_file\_driver) | Enable file storage provider | `bool` | `true` | no |
 | <a name="input_enable_snapshot_controller"></a> [enable\_snapshot\_controller](#input\_enable\_snapshot\_controller) | Enable snapshot controller | `bool` | `true` | no |
 | <a name="input_enable_storage_profile"></a> [enable\_storage\_profile](#input\_enable\_storage\_profile) | Enable storage profile for the cluster. If disabled `enable_blob_driver`, `enable_file_driver`, `enable_disk_driver` and `enable_snapshot_controller` will have no impact | `bool` | `true` | no |
+| <a name="input_gpu_pools"></a> [gpu\_pools](#input\_gpu\_pools) | GPU pools to be attached | <pre>list(object({<br>    name                  = string<br>    instance_type         = string<br>    max_count             = optional(number, 2)<br>    enable_spot_pool      = optional(bool, true)<br>    enable_on_demand_pool = optional(bool, true)<br>  }))</pre> | n/a | yes |
+| <a name="input_initial_node_pool_max_count"></a> [initial\_node\_pool\_max\_count](#input\_initial\_node\_pool\_max\_count) | Max count in the initial node pool | `number` | `2` | no |
 | <a name="input_initial_node_pool_max_surge"></a> [initial\_node\_pool\_max\_surge](#input\_initial\_node\_pool\_max\_surge) | Max surge in percentage for the intial node pool | `string` | `"10"` | no |
+| <a name="input_initial_node_pool_min_count"></a> [initial\_node\_pool\_min\_count](#input\_initial\_node\_pool\_min\_count) | Min count in the initial node pool | `number` | `1` | no |
+| <a name="input_initial_node_pool_name"></a> [initial\_node\_pool\_name](#input\_initial\_node\_pool\_name) | Name of the initial node pool | `string` | `"initial"` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.28"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_enabled"></a> [log\_analytics\_workspace\_enabled](#input\_log\_analytics\_workspace\_enabled) | value to enable log analytics workspace | `bool` | `true` | no |
 | <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Max pods per node | `number` | `32` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |

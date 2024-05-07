@@ -4,7 +4,7 @@ resource "azurerm_user_assigned_identity" "cluster" {
   resource_group_name = var.resource_group_name
 }
 
-# Not sure why it is needed but its mentioned https://learn.microsoft.com/en-us/azure/aks/configure-kubenet#add-role-assignment-for-managed-identity
+# https://learn.microsoft.com/en-us/azure/aks/configure-kubenet#add-role-assignment-for-managed-identity
 resource "azurerm_role_assignment" "network_contributor_cluster" {
   scope                = var.vnet_id
   role_definition_name = "Network Contributor"
@@ -21,15 +21,13 @@ module "aks" {
   workload_identity_enabled   = var.workload_identity_enabled
   temporary_name_for_rotation = "tmpdefault"
 
-  # agent configuration
-  # agents_availability_zones = []
-  agents_labels = {
-    "truefoundry" : "essential"
-  }
-  agents_count          = local.intial_node_pool_min_count
-  agents_max_count      = local.intial_node_pool_max_count
-  agents_min_count      = local.intial_node_pool_min_count
-  agents_pool_name      = "initial"
+  log_analytics_workspace_enabled = var.log_analytics_workspace_enabled
+  # agents_labels = {
+  #   "truefoundry" : "essential"
+  # }
+  agents_pool_name      = var.initial_node_pool_name
+  agents_min_count      = var.initial_node_pool_min_count
+  agents_max_count      = var.initial_node_pool_max_count
   agents_size           = var.intial_node_pool_instance_type
   agents_max_pods       = var.max_pods_per_node
   agents_pool_max_surge = var.initial_node_pool_max_surge
@@ -81,7 +79,7 @@ module "aks" {
 
   # makes the initial node pool have a taint `CriticalAddonsOnly=true:NoSchedule`
   # helpful in scheduling important workloads 
-  only_critical_addons_enabled = true
+  # only_critical_addons_enabled = true
 
   private_cluster_enabled = var.private_cluster_enabled
 
