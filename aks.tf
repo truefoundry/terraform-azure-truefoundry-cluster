@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
 
 module "aks" {
   source                      = "Azure/aks/azurerm"
-  version                     = "8.0.0"
+  version                     = "9.0.0"
   resource_group_name         = var.resource_group_name
   cluster_name                = var.name
   location                    = var.location
@@ -33,7 +33,7 @@ module "aks" {
   agents_pool_max_surge = var.initial_node_pool_max_surge
   agents_tags           = local.tags
 
-  orchestrator_version = coalesce(var.orchestrator_version, var.kubernetes_version)
+  orchestrator_version = var.orchestrator_version
 
   # autoscaler configuration
   auto_scaler_profile_enabled                          = true
