@@ -21,7 +21,7 @@ locals {
     enable_host_encryption  = true
     enable_node_public_ip   = false
     eviction_policy         = "Delete"
-    orchestrator_version    = var.kubernetes_version
+    orchestrator_version    = var.orchestrator_version
     node_taints = [
       "kubernetes.azure.com/scalesetpriority=spot:NoSchedule"
     ]
@@ -42,7 +42,7 @@ locals {
       custom_ca_trust_enabled = false
       enable_host_encryption  = true
       enable_node_public_ip   = false
-      orchestrator_version    = var.kubernetes_version
+      orchestrator_version    = var.orchestrator_version
       node_taints             = []
       tags                    = local.tags
       zones                   = []
@@ -63,7 +63,7 @@ locals {
       enable_host_encryption  = true
       enable_node_public_ip   = false
       eviction_policy         = "Delete"
-      orchestrator_version    = var.kubernetes_version
+      orchestrator_version    = var.orchestrator_version
       node_taints = [
         "kubernetes.azure.com/scalesetpriority=spot:NoSchedule",
         "nvidia.com/gpu=Present:NoSchedule"
@@ -85,7 +85,7 @@ locals {
       custom_ca_trust_enabled = false
       enable_host_encryption  = true
       enable_node_public_ip   = false
-      orchestrator_version    = var.kubernetes_version
+      orchestrator_version    = var.orchestrator_version
       node_taints = [
         "nvidia.com/gpu=Present:NoSchedule"
       ]
@@ -107,7 +107,7 @@ locals {
       enable_host_encryption  = true
       enable_node_public_ip   = false
       eviction_policy         = "Delete"
-      orchestrator_version    = var.kubernetes_version
+      orchestrator_version    = var.orchestrator_version
       node_taints = [
         "kubernetes.azure.com/scalesetpriority=spot:NoSchedule",
         "class.truefoundry.io/component=control-plane:NoSchedule"
