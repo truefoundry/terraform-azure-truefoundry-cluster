@@ -12,6 +12,7 @@ locals {
     name                    = "${v["name"]}sp"
     node_count              = 0
     max_count               = v["max_count"]
+    node_count              = null
     min_count               = 0
     os_disk_size_gb         = 100
     priority                = "Spot"
@@ -34,6 +35,7 @@ locals {
       name                    = "${v["name"]}"
       node_count              = 0
       max_count               = v["max_count"]
+      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
@@ -54,6 +56,7 @@ locals {
       name                    = "${v["name"]}sp"
       node_count              = 0
       max_count               = v["max_count"]
+      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Spot"
@@ -77,6 +80,7 @@ locals {
       name                    = "${v["name"]}"
       node_count              = 0
       max_count               = v["max_count"]
+      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
@@ -98,6 +102,7 @@ locals {
       name                    = "tfycp"
       node_count              = 0
       max_count               = 4
+      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Spot"
