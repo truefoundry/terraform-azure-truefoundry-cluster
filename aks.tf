@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "network_contributor_cluster" {
 
 module "aks" {
   source                      = "Azure/aks/azurerm"
-  version                     = "9.0.0"
+  version                     = "9.1.0"
   resource_group_name         = var.resource_group_name
   cluster_name                = var.name
   location                    = var.location
@@ -87,5 +87,6 @@ module "aks" {
   rbac_aad                          = false
   role_based_access_control_enabled = false
 
-  tags = local.tags
+  sku_tier = var.sku_tier
+  tags     = local.tags
 }

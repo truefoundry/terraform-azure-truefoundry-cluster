@@ -35,6 +35,12 @@ variable "disk_size" {
   type        = string
 }
 
+variable "sku_tier" {
+  description = "SKU tier of the cluster. Defaults to standard"
+  default     = "Standard"
+  type        = string
+}
+
 ################################################################################
 # Initial Nodepool configurations
 ################################################################################
