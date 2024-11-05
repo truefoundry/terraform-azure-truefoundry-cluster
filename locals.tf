@@ -12,7 +12,6 @@ locals {
     name                    = "${v["name"]}sp"
     node_count              = 0
     max_count               = v["max_count"]
-    node_count              = null
     min_count               = 0
     os_disk_size_gb         = 100
     priority                = "Spot"
@@ -31,11 +30,10 @@ locals {
     vnet_subnet_id = var.subnet_id
     max_pods       = var.max_pods_per_node
     } if v["enable_spot_pool"] },
-    { for k, v in var.cpu_pools : "${v["name"]}" => {
-      name                    = "${v["name"]}"
+    { for k, v in var.cpu_pools : v["name"] => {
+      name                    = v["name"]
       node_count              = 0
       max_count               = v["max_count"]
-      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
@@ -56,7 +54,6 @@ locals {
       name                    = "${v["name"]}sp"
       node_count              = 0
       max_count               = v["max_count"]
-      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Spot"
@@ -76,11 +73,10 @@ locals {
       vnet_subnet_id = var.subnet_id
       max_pods       = var.max_pods_per_node
     } if v["enable_spot_pool"] },
-    { for k, v in var.gpu_pools : "${v["name"]}" => {
-      name                    = "${v["name"]}"
+    { for k, v in var.gpu_pools : v["name"] => {
+      name                    = v["name"]
       node_count              = 0
       max_count               = v["max_count"]
-      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
@@ -102,7 +98,6 @@ locals {
       name                    = "tfycp"
       node_count              = 0
       max_count               = 4
-      node_count              = null
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Spot"
