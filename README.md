@@ -50,14 +50,14 @@ Truefoundry Azure Cluster Module
 | <a name="input_initial_node_pool_min_count"></a> [initial\_node\_pool\_min\_count](#input\_initial\_node\_pool\_min\_count) | Min count in the initial node pool | `number` | `1` | no |
 | <a name="input_initial_node_pool_name"></a> [initial\_node\_pool\_name](#input\_initial\_node\_pool\_name) | Name of the initial node pool | `string` | `"initial"` | no |
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.29"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.30"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_enabled"></a> [log\_analytics\_workspace\_enabled](#input\_log\_analytics\_workspace\_enabled) | value to enable log analytics workspace | `bool` | `true` | no |
 | <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Max pods per node | `number` | `32` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |
 | <a name="input_oidc_issuer_enabled"></a> [oidc\_issuer\_enabled](#input\_oidc\_issuer\_enabled) | Enable OIDC for the cluster | `bool` | `true` | no |
-| <a name="input_orchestrator_version"></a> [orchestrator\_version](#input\_orchestrator\_version) | Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes\_version until passed explicitly | `string` | `"1.29"` | no |
+| <a name="input_orchestrator_version"></a> [orchestrator\_version](#input\_orchestrator\_version) | Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes\_version until passed explicitly | `string` | `"1.30"` | no |
 | <a name="input_pod_cidr"></a> [pod\_cidr](#input\_pod\_cidr) | CIDR of the pod in cluster | `string` | `"10.244.0.0/16"` | no |
 | <a name="input_private_cluster_enabled"></a> [private\_cluster\_enabled](#input\_private\_cluster\_enabled) | Private cluster | `bool` | `false` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group | `string` | n/a | yes |
