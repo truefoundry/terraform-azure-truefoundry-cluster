@@ -1,11 +1,22 @@
 ################################################################################
-# Cluster
+# Existing cluster
 ################################################################################
 
+variable "use_existing_cluster" {
+  description = "Flag to enable existing cluster"
+  default     = false
+  type        = bool
+}
+
+
 variable "name" {
-  description = "Name of the cluster"
+  description = "Name of the cluster. If use_existing_cluster is enabled name is used to fetch details of existing cluster"
   type        = string
 }
+
+################################################################################
+# Cluster
+################################################################################
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
   default     = "1.30"

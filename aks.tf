@@ -1,4 +1,5 @@
 resource "azurerm_user_assigned_identity" "cluster" {
+  count               = var.use_existing_cluster ? 0 : 1
   location            = var.location
   name                = var.name
   resource_group_name = var.resource_group_name
@@ -6,12 +7,14 @@ resource "azurerm_user_assigned_identity" "cluster" {
 
 # https://learn.microsoft.com/en-us/azure/aks/configure-kubenet#add-role-assignment-for-managed-identity
 resource "azurerm_role_assignment" "network_contributor_cluster" {
+  count                = var.use_existing_cluster ? 0 : 1
   scope                = var.vnet_id
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_user_assigned_identity.cluster.principal_id
+  principal_id         = azurerm_user_assigned_identity.cluster[0].principal_id
 }
 
 module "aks" {
+  count                       = var.use_existing_cluster ? 0 : 1
   source                      = "Azure/aks/azurerm"
   version                     = "9.1.0"
   resource_group_name         = var.resource_group_name
@@ -52,7 +55,7 @@ module "aks" {
   create_role_assignment_network_contributor = false
   enable_auto_scaling                        = true
   enable_host_encryption                     = true
-  identity_ids                               = [azurerm_user_assigned_identity.cluster.id]
+  identity_ids                               = [azurerm_user_assigned_identity.cluster[0].id]
   identity_type                              = "UserAssigned"
   kubernetes_version                         = var.kubernetes_version
 
