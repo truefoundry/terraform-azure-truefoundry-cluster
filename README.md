@@ -66,7 +66,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_sku_tier"></a> [sku\_tier](#input\_sku\_tier) | SKU tier of the cluster. Defaults to standard | `string` | `"Standard"` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet Id for the cluster | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
-| <a name="input_use_existing_cluster"></a> [use\_existing\_cluster](#input\_use\_existing\_cluster) | Flag to enable existing cluster | `bool` | `false` | no |
+| <a name="input_use_existing_cluster"></a> [use\_existing\_cluster](#input\_use\_existing\_cluster) | Flag to reuse existing cluster | `bool` | `false` | no |
 | <a name="input_vnet_id"></a> [vnet\_id](#input\_vnet\_id) | Vnet ID for the cluster | `string` | n/a | yes |
 | <a name="input_workload_identity_enabled"></a> [workload\_identity\_enabled](#input\_workload\_identity\_enabled) | Enable workload identity in the cluster | `bool` | `true` | no |
 
