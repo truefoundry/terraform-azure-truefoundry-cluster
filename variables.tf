@@ -3,7 +3,7 @@
 ################################################################################
 
 variable "use_existing_cluster" {
-  description = "Flag to enable existing cluster"
+  description = "Flag to reuse existing cluster"
   default     = false
   type        = bool
 }
