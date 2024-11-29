@@ -12,7 +12,7 @@ locals {
     name                    = "${v["name"]}sp"
     node_count              = 0
     max_count               = v["max_count"]
-    min_count               = 0
+    min_count               = v["min_count"]
     os_disk_size_gb         = 100
     priority                = "Spot"
     vm_size                 = v["instance_type"]
@@ -34,7 +34,7 @@ locals {
       name                    = v["name"]
       node_count              = 0
       max_count               = v["max_count"]
-      min_count               = 0
+      min_count               = v["min_count"]
       os_disk_size_gb         = 100
       priority                = "Regular"
       vm_size                 = v["instance_type"]
@@ -54,7 +54,7 @@ locals {
       name                    = "${v["name"]}sp"
       node_count              = 0
       max_count               = v["max_count"]
-      min_count               = 0
+      min_count               = v["min_count"]
       os_disk_size_gb         = 100
       priority                = "Spot"
       vm_size                 = v["instance_type"]
@@ -77,7 +77,7 @@ locals {
       name                    = v["name"]
       node_count              = 0
       max_count               = v["max_count"]
-      min_count               = 0
+      min_count               = v["min_count"]
       os_disk_size_gb         = 100
       priority                = "Regular"
       vm_size                 = v["instance_type"]
