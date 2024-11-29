@@ -95,6 +95,7 @@ variable "cpu_pools" {
   type = list(object({
     name                  = string
     instance_type         = string
+    min_count             = optional(number, 0)
     max_count             = optional(number, 2)
     enable_spot_pool      = optional(bool, true)
     enable_on_demand_pool = optional(bool, true)
@@ -111,6 +112,7 @@ variable "gpu_pools" {
   type = list(object({
     name                  = string
     instance_type         = string
+    min_count             = optional(number, 0)
     max_count             = optional(number, 2)
     enable_spot_pool      = optional(bool, true)
     enable_on_demand_pool = optional(bool, true)
