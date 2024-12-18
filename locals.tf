@@ -10,7 +10,7 @@ locals {
   )
   node_pools = merge({ for k, v in var.cpu_pools : "${v["name"]}sp" => {
     name                    = "${v["name"]}sp"
-    node_count              = 0
+    node_count              = null
     max_count               = v["max_count"]
     min_count               = v["min_count"]
     os_disk_size_gb         = 100
@@ -32,7 +32,7 @@ locals {
     } if v["enable_spot_pool"] },
     { for k, v in var.cpu_pools : v["name"] => {
       name                    = v["name"]
-      node_count              = 0
+      node_count              = null
       max_count               = v["max_count"]
       min_count               = v["min_count"]
       os_disk_size_gb         = 100
@@ -52,7 +52,7 @@ locals {
 
     { for k, v in var.gpu_pools : "${v["name"]}sp" => {
       name                    = "${v["name"]}sp"
-      node_count              = 0
+      node_count              = null
       max_count               = v["max_count"]
       min_count               = v["min_count"]
       os_disk_size_gb         = 100
@@ -75,7 +75,7 @@ locals {
     } if v["enable_spot_pool"] },
     { for k, v in var.gpu_pools : v["name"] => {
       name                    = v["name"]
-      node_count              = 0
+      node_count              = null
       max_count               = v["max_count"]
       min_count               = v["min_count"]
       os_disk_size_gb         = 100
@@ -96,7 +96,7 @@ locals {
     } if v["enable_on_demand_pool"] },
     var.control_plane ? { "tfycp" = {
       name                    = "tfycp"
-      node_count              = 0
+      node_count              = null
       max_count               = 4
       min_count               = 0
       os_disk_size_gb         = 100
