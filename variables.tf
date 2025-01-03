@@ -64,7 +64,7 @@ variable "initial_node_pool_name" {
 
 variable "intial_node_pool_instance_type" {
   description = "Instance size of the initial node pool"
-  default     = "Standard_D2s_v5"
+  default     = "Standard_D4s_v5"
   type        = string
 }
 
@@ -132,7 +132,7 @@ variable "control_plane" {
 
 variable "control_plane_instance_type" {
   description = "Whether the cluster is control plane"
-  default     = "Standard_D2s_v5"
+  default     = "Standard_D4s_v5"
   type        = string
 
 }

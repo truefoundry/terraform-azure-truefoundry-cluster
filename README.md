@@ -35,7 +35,7 @@ Truefoundry Azure Cluster Module
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_ip_ranges"></a> [allowed\_ip\_ranges](#input\_allowed\_ip\_ranges) | Allowed IP ranges to connect to the cluster | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Whether the cluster is control plane | `bool` | n/a | yes |
-| <a name="input_control_plane_instance_type"></a> [control\_plane\_instance\_type](#input\_control\_plane\_instance\_type) | Whether the cluster is control plane | `string` | `"Standard_D2s_v5"` | no |
+| <a name="input_control_plane_instance_type"></a> [control\_plane\_instance\_type](#input\_control\_plane\_instance\_type) | Whether the cluster is control plane | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_cpu_pools"></a> [cpu\_pools](#input\_cpu\_pools) | CPU pools to be attached | <pre>list(object({<br/>    name                  = string<br/>    instance_type         = string<br/>    min_count             = optional(number, 0)<br/>    max_count             = optional(number, 2)<br/>    enable_spot_pool      = optional(bool, true)<br/>    enable_on_demand_pool = optional(bool, true)<br/>  }))</pre> | n/a | yes |
 | <a name="input_disk_driver_version"></a> [disk\_driver\_version](#input\_disk\_driver\_version) | Version of disk driver. Supported values `v1` and `v2` | `string` | `"v1"` | no |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | Disk size of the initial node pool in GB | `string` | `"100"` | no |
@@ -50,7 +50,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_initial_node_pool_max_surge"></a> [initial\_node\_pool\_max\_surge](#input\_initial\_node\_pool\_max\_surge) | Max surge in percentage for the intial node pool | `string` | `"10"` | no |
 | <a name="input_initial_node_pool_min_count"></a> [initial\_node\_pool\_min\_count](#input\_initial\_node\_pool\_min\_count) | Min count in the initial node pool | `number` | `1` | no |
 | <a name="input_initial_node_pool_name"></a> [initial\_node\_pool\_name](#input\_initial\_node\_pool\_name) | Name of the initial node pool | `string` | `"initial"` | no |
-| <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D2s_v5"` | no |
+| <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.30"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_enabled"></a> [log\_analytics\_workspace\_enabled](#input\_log\_analytics\_workspace\_enabled) | value to enable log analytics workspace | `bool` | `true` | no |
