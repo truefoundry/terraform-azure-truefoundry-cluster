@@ -191,6 +191,7 @@ variable "vnet_id" {
 variable "subnet_id" {
   description = "Subnet Id for the cluster"
   type        = string
+  default     = null
 }
 
 variable "network_plugin" {
