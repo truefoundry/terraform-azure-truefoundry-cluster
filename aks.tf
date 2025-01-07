@@ -93,3 +93,16 @@ module "aks" {
   sku_tier = var.sku_tier
   tags     = local.tags
 }
+
+resource "azurerm_monitor_diagnostic_setting" "cluster_autoscaler_diagnostic" {
+  count              = var.log_analytics_workspace_enabled ? 1 : 0
+  name               = "cluster-autoscaler-diagnostic"
+  target_resource_id = module.aks[0].aks_id
+
+  log_analytics_workspace_id = module.aks[0].azurerm_log_analytics_workspace_id
+  log_analytics_destination_type = "Dedicated"
+
+  enabled_log {
+    category = "cluster-autoscaler"
+  }
+}
