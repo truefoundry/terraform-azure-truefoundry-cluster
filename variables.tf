@@ -34,6 +34,12 @@ variable "log_analytics_workspace_enabled" {
   default     = true
 }
 
+variable "log_analytics_autoscaler_diagnostic_name" {
+  description = "Name of the log analytics workspace for autoscaler diagnostic"
+  type        = string
+  default     = "cluster-autoscaler-diagnostic"
+}
+
 variable "oidc_issuer_enabled" {
   description = "Enable OIDC for the cluster"
   default     = true
