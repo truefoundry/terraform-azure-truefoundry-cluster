@@ -34,12 +34,6 @@ variable "log_analytics_workspace_enabled" {
   default     = true
 }
 
-variable "log_analytics_workspace_name" {
-  description = "Name of the log analytics workspace"
-  type        = string
-  default     = ""
-}
-
 variable "log_analytics_workspace_name_override" {
   description = "Name override of the log analytics workspace. Default is '<cluster-name>-log-analytics'"
   type        = string
