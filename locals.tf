@@ -117,4 +117,7 @@ locals {
       vnet_subnet_id = var.subnet_id
       max_pods       = var.max_pods_per_node
   } } : null)
+
+  log_analytics_workspace_name = coalesce(var.log_analytics_workspace_name_override, "${var.name}-log-analytics")
+  log_analytics_cluster_autoscaler_diagnostic_name = coalesce(var.cluster_autoscaler_diagnostic_name_override, "${var.name}-cluster-autoscaler-diagnostic")
 }

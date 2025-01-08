@@ -25,6 +25,7 @@ module "aks" {
   temporary_name_for_rotation = "tmpdefault"
 
   log_analytics_workspace_enabled = var.log_analytics_workspace_enabled
+  cluster_log_analytics_workspace_name = local.log_analytics_workspace_name
   # agents_labels = {
   #   "truefoundry" : "essential"
   # }
@@ -96,7 +97,7 @@ module "aks" {
 
 resource "azurerm_monitor_diagnostic_setting" "cluster_autoscaler_diagnostic" {
   count              = var.log_analytics_workspace_enabled ? 1 : 0
-  name               = var.log_analytics_autoscaler_diagnostic_name
+  name               = local.log_analytics_cluster_autoscaler_diagnostic_name
   target_resource_id = module.aks[0].aks_id
 
   log_analytics_workspace_id     = module.aks[0].azurerm_log_analytics_workspace_id
