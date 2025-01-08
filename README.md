@@ -35,7 +35,8 @@ Truefoundry Azure Cluster Module
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_ip_ranges"></a> [allowed\_ip\_ranges](#input\_allowed\_ip\_ranges) | Allowed IP ranges to connect to the cluster | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
-| <a name="input_cluster_autoscaler_diagnostic_name_override"></a> [cluster\_autoscaler\_diagnostic\_name\_override](#input\_cluster\_autoscaler\_diagnostic\_name\_override) | Name override of the cluster autoscaler diagnostic setting. Default is '<cluster-name>-cluster-autoscaler-diagnostic' | `string` | `""` | no |
+| <a name="input_cluster_autoscaler_diagnostic_enable_override"></a> [cluster\_autoscaler\_diagnostic\_enable\_override](#input\_cluster\_autoscaler\_diagnostic\_enable\_override) | Enable override of the cluster autoscaler diagnostic setting name. | `bool` | `false` | no |
+| <a name="input_cluster_autoscaler_diagnostic_override_name"></a> [cluster\_autoscaler\_diagnostic\_override\_name](#input\_cluster\_autoscaler\_diagnostic\_override\_name) | Name override of the cluster autoscaler diagnostic setting. Default is '<cluster-name>-cluster-autoscaler-diagnostic' | `string` | `""` | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Whether the cluster is control plane | `bool` | n/a | yes |
 | <a name="input_control_plane_instance_type"></a> [control\_plane\_instance\_type](#input\_control\_plane\_instance\_type) | Whether the cluster is control plane | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_cpu_pools"></a> [cpu\_pools](#input\_cpu\_pools) | CPU pools to be attached | <pre>list(object({<br/>    name                  = string<br/>    instance_type         = string<br/>    min_count             = optional(number, 0)<br/>    max_count             = optional(number, 2)<br/>    enable_spot_pool      = optional(bool, true)<br/>    enable_on_demand_pool = optional(bool, true)<br/>  }))</pre> | n/a | yes |
@@ -55,8 +56,9 @@ Truefoundry Azure Cluster Module
 | <a name="input_intial_node_pool_instance_type"></a> [intial\_node\_pool\_instance\_type](#input\_intial\_node\_pool\_instance\_type) | Instance size of the initial node pool | `string` | `"Standard_D4s_v5"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.30"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_enable_override"></a> [log\_analytics\_workspace\_enable\_override](#input\_log\_analytics\_workspace\_enable\_override) | Enable override of the log analytics workspace name. | `bool` | `false` | no |
 | <a name="input_log_analytics_workspace_enabled"></a> [log\_analytics\_workspace\_enabled](#input\_log\_analytics\_workspace\_enabled) | value to enable log analytics workspace | `bool` | `true` | no |
-| <a name="input_log_analytics_workspace_name_override"></a> [log\_analytics\_workspace\_name\_override](#input\_log\_analytics\_workspace\_name\_override) | Name override of the log analytics workspace. Default is '<cluster-name>-log-analytics' | `string` | `""` | no |
+| <a name="input_log_analytics_workspace_override_name"></a> [log\_analytics\_workspace\_override\_name](#input\_log\_analytics\_workspace\_override\_name) | Name override of the log analytics workspace. Default is '<cluster-name>-log-analytics' | `string` | `""` | no |
 | <a name="input_max_pods_per_node"></a> [max\_pods\_per\_node](#input\_max\_pods\_per\_node) | Max pods per node | `number` | `32` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster. If use\_existing\_cluster is enabled name is used to fetch details of existing cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |
