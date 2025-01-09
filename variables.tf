@@ -34,6 +34,38 @@ variable "log_analytics_workspace_enabled" {
   default     = true
 }
 
+variable "log_analytics_workspace_enable_override" {
+  description = "Enable overriding of the log analytics workspace name."
+  type        = bool
+  default     = false
+}
+
+variable "log_analytics_workspace_override_name" {
+  description = "Log analytics workspace name. Default is '<cluster-name>-log-analytics'"
+  type        = string
+  default     = ""
+  validation {
+    condition     = can(regex("^([a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9])?$", var.log_analytics_workspace_override_name))
+    error_message = "The workspace name must be 4-63 characters long, consisting of letters, digits, or '-', where '-' cannot be the first or last character."
+  }
+}
+
+variable "cluster_autoscaler_diagnostic_enable_override" {
+  description = "Enable overriding of the cluster autoscaler diagnostic setting name."
+  type        = bool
+  default     = false
+}
+
+variable "cluster_autoscaler_diagnostic_override_name" {
+  description = "Cluster autoscaler diagnostic setting name. Default is '<cluster-name>-cluster-autoscaler'"
+  type        = string
+  default     = ""
+  validation {
+    condition     = can(regex("^([a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9])?$", var.cluster_autoscaler_diagnostic_override_name))
+    error_message = "The diagnostic setting name must be 4-63 characters long, consisting of letters, digits, or '-', where '-' cannot be the first or last character."
+  }
+}
+
 variable "oidc_issuer_enabled" {
   description = "Enable OIDC for the cluster"
   default     = true
