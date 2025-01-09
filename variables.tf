@@ -35,13 +35,13 @@ variable "log_analytics_workspace_enabled" {
 }
 
 variable "log_analytics_workspace_enable_override" {
-  description = "Enable override of the log analytics workspace name."
+  description = "Enable overriding of the log analytics workspace name."
   type        = bool
   default     = false
 }
 
 variable "log_analytics_workspace_override_name" {
-  description = "Name override of the log analytics workspace. Default is '<cluster-name>-log-analytics'"
+  description = "Log analytics workspace name. Default is '<cluster-name>-log-analytics'"
   type        = string
   default     = ""
   validation {
@@ -51,13 +51,13 @@ variable "log_analytics_workspace_override_name" {
 }
 
 variable "cluster_autoscaler_diagnostic_enable_override" {
-  description = "Enable override of the cluster autoscaler diagnostic setting name."
+  description = "Enable overriding of the cluster autoscaler diagnostic setting name."
   type        = bool
   default     = false
 }
 
 variable "cluster_autoscaler_diagnostic_override_name" {
-  description = "Name override of the cluster autoscaler diagnostic setting. Default is '<cluster-name>-cluster-autoscaler-diagnostic'"
+  description = "Cluster autoscaler diagnostic setting name. Default is '<cluster-name>-cluster-autoscaler'"
   type        = string
   default     = ""
   validation {

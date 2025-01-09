@@ -118,7 +118,7 @@ locals {
       max_pods       = var.max_pods_per_node
   } } : null)
 
-  log_analytics_workspace_name = var.log_analytics_workspace_enable_override ? var.log_analytics_workspace_override_name : "${var.name}-log-analytics"
+  log_analytics_workspace_name = var.log_analytics_workspace_enable_override ? var.log_analytics_workspace_override_name : substr("${var.name}-log-analytics", 0, 63)
 
-  log_analytics_cluster_autoscaler_diagnostic_name = var.cluster_autoscaler_diagnostic_enable_override ? var.cluster_autoscaler_diagnostic_override_name : "${var.name}-cluster-autoscaler-diagnostic"
+  log_analytics_cluster_autoscaler_diagnostic_name = var.cluster_autoscaler_diagnostic_enable_override ? var.cluster_autoscaler_diagnostic_override_name : substr("${var.name}-cluster-autoscaler", 0, 63)
 }
