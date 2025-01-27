@@ -94,7 +94,7 @@ variable "initial_node_pool_name" {
   type        = string
 }
 
-variable "intial_node_pool_instance_type" {
+variable "initial_node_pool_instance_type" {
   description = "Instance size of the initial node pool"
   default     = "Standard_D4s_v5"
   type        = string
