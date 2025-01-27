@@ -32,7 +32,7 @@ module "aks" {
   agents_pool_name      = var.initial_node_pool_name
   agents_min_count      = var.initial_node_pool_min_count
   agents_max_count      = var.initial_node_pool_max_count
-  agents_size           = var.intial_node_pool_instance_type
+  agents_size           = var.initial_node_pool_instance_type
   agents_max_pods       = var.max_pods_per_node
   agents_pool_max_surge = var.initial_node_pool_max_surge
   agents_tags           = local.tags
