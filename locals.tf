@@ -110,7 +110,7 @@ locals {
       orchestrator_version    = var.orchestrator_version
       node_taints = [
         "kubernetes.azure.com/scalesetpriority=spot:NoSchedule",
-        "class.truefoundry.io/component=control-plane:NoSchedule"
+        "class.truefoundry.com/component=control-plane:NoSchedule"
       ]
       tags           = local.tags
       zones          = []
