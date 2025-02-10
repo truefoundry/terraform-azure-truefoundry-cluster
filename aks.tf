@@ -108,6 +108,6 @@ resource "azurerm_monitor_diagnostic_setting" "cluster_autoscaler_diagnostic" {
   }
 
   lifecycle {
-    ignore_changes = [ metric ]
+    ignore_changes = [metric]
   }
 }
