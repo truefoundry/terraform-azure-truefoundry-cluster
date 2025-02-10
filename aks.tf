@@ -106,4 +106,8 @@ resource "azurerm_monitor_diagnostic_setting" "cluster_autoscaler_diagnostic" {
   enabled_log {
     category = "cluster-autoscaler"
   }
+
+  lifecycle {
+    ignore_changes = [ metric ]
+  }
 }
