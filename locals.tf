@@ -100,18 +100,43 @@ locals {
       max_count               = 4
       min_count               = 0
       os_disk_size_gb         = 100
-      priority                = "Spot"
+      priority                = "Regular"
       vm_size                 = var.control_plane_instance_type
       enable_auto_scaling     = true
       custom_ca_trust_enabled = false
       enable_host_encryption  = true
       enable_node_public_ip   = false
-      eviction_policy         = "Delete"
       orchestrator_version    = var.orchestrator_version
       node_taints = [
-        "kubernetes.azure.com/scalesetpriority=spot:NoSchedule",
         "class.truefoundry.com/component=control-plane:NoSchedule"
       ]
+      node_labels = {
+        "class.truefoundry.com/component" = "control-plane"
+      }
+      tags           = local.tags
+      zones          = []
+      vnet_subnet_id = var.subnet_id
+      max_pods       = var.max_pods_per_node
+    } } : null,
+    var.critical_node_pool_enabled ? { "critical" = {
+      name                    = "critical"
+      node_count              = null
+      max_count               = 2
+      min_count               = 0
+      os_disk_size_gb         = 100
+      priority                = "Regular"
+      vm_size                 = var.critical_node_pool_instance_type
+      enable_auto_scaling     = true
+      custom_ca_trust_enabled = false
+      enable_host_encryption  = true
+      enable_node_public_ip   = false
+      orchestrator_version    = var.orchestrator_version
+      node_taints = [
+        "class.truefoundry.com/component=critical:NoSchedule"
+      ]
+      node_labels = {
+        "class.truefoundry.com/component" = "critical"
+      }
       tags           = local.tags
       zones          = []
       vnet_subnet_id = var.subnet_id

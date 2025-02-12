@@ -163,7 +163,19 @@ variable "control_plane" {
 }
 
 variable "control_plane_instance_type" {
-  description = "Whether the cluster is control plane"
+  description = "Control plane nodepool instance type"
+  default     = "Standard_D4s_v5"
+  type        = string
+}
+
+variable "critical_node_pool_enabled" {
+  description = "Enable Critical nodepool for the cluster"
+  default     = true
+  type        = bool
+}
+
+variable "critical_node_pool_instance_type" {
+  description = "Critical nodepool instance type"
   default     = "Standard_D4s_v5"
   type        = string
 
