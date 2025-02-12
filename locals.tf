@@ -125,7 +125,7 @@ locals {
       min_count               = 0
       os_disk_size_gb         = 100
       priority                = "Regular"
-      vm_size                 = var.control_plane_instance_type
+      vm_size                 = var.critical_node_pool_instance_type
       enable_auto_scaling     = true
       custom_ca_trust_enabled = false
       enable_host_encryption  = true
