@@ -19,7 +19,7 @@ Truefoundry Azure Cluster Module
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_aks"></a> [aks](#module\_aks) | Azure/aks/azurerm | 9.1.0 |
+| <a name="module_aks"></a> [aks](#module\_aks) | Azure/aks/azurerm | 9.4.0 |
 
 ## Resources
 
@@ -56,7 +56,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_initial_node_pool_max_surge"></a> [initial\_node\_pool\_max\_surge](#input\_initial\_node\_pool\_max\_surge) | Max surge in percentage for the intial node pool | `string` | `"10"` | no |
 | <a name="input_initial_node_pool_min_count"></a> [initial\_node\_pool\_min\_count](#input\_initial\_node\_pool\_min\_count) | Min count in the initial node pool | `number` | `1` | no |
 | <a name="input_initial_node_pool_name"></a> [initial\_node\_pool\_name](#input\_initial\_node\_pool\_name) | Name of the initial node pool | `string` | `"initial"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.30"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of the kubernetes engine | `string` | `"1.32"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the resource group | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_enable_override"></a> [log\_analytics\_workspace\_enable\_override](#input\_log\_analytics\_workspace\_enable\_override) | Enable overriding of the log analytics workspace name. | `bool` | `false` | no |
 | <a name="input_log_analytics_workspace_enabled"></a> [log\_analytics\_workspace\_enabled](#input\_log\_analytics\_workspace\_enabled) | value to enable log analytics workspace | `bool` | `true` | no |
