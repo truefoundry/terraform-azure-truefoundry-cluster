@@ -10,7 +10,6 @@ terraform state mv 'module.aks.azurerm_log_analytics_workspace.main[0]' 'module.
 terraform state mv 'module.aks.null_resource.kubernetes_cluster_name_keeper' 'module.aks[0].null_resource.kubernetes_cluster_name_keeper'
 terraform state mv 'module.aks.null_resource.kubernetes_version_keeper' 'module.aks[0].null_resource.kubernetes_version_keeper'
 
-
 ####################################################################################################################################
 # NOTE: The node pools state migration commands may fail depending upon the nodepools chosen.
 ####################################################################################################################################
@@ -26,6 +25,12 @@ terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_cr
 terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["cpusp"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["cpusp"]'
 terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["t4"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["t4"]'
 terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["t4sp"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["t4sp"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x2"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x2"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x2sp"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x2sp"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x4"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x4"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x4sp"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x4sp"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x8"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x8"]'
+terraform state mv 'module.aks.azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x8sp"]' 'module.aks[0].azurerm_kubernetes_cluster_node_pool.node_pool_create_before_destroy["a10x8sp"]'
 terraform state mv 'module.aks.null_resource.pool_name_keeper["a10"]' 'module.aks[0].null_resource.pool_name_keeper["a10"]'
 terraform state mv 'module.aks.null_resource.pool_name_keeper["a100"]' 'module.aks[0].null_resource.pool_name_keeper["a100"]'
 terraform state mv 'module.aks.null_resource.pool_name_keeper["a100sp"]' 'module.aks[0].null_resource.pool_name_keeper["a100sp"]'
@@ -36,3 +41,9 @@ terraform state mv 'module.aks.null_resource.pool_name_keeper["cpu2xsp"]' 'modul
 terraform state mv 'module.aks.null_resource.pool_name_keeper["cpusp"]' 'module.aks[0].null_resource.pool_name_keeper["cpusp"]'
 terraform state mv 'module.aks.null_resource.pool_name_keeper["t4"]' 'module.aks[0].null_resource.pool_name_keeper["t4"]'
 terraform state mv 'module.aks.null_resource.pool_name_keeper["t4sp"]' 'module.aks[0].null_resource.pool_name_keeper["t4sp"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x2"]' 'module.aks[0].null_resource.pool_name_keeper["a10x2"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x2sp"]' 'module.aks[0].null_resource.pool_name_keeper["a10x2sp"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x4"]' 'module.aks[0].null_resource.pool_name_keeper["a10x4"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x4sp"]' 'module.aks[0].null_resource.pool_name_keeper["a10x4sp"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x8"]' 'module.aks[0].null_resource.pool_name_keeper["a10x8"]'
+terraform state mv 'module.aks.null_resource.pool_name_keeper["a10x8sp"]' 'module.aks[0].null_resource.pool_name_keeper["a10x8sp"]'
