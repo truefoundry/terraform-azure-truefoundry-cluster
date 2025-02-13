@@ -19,7 +19,7 @@ variable "name" {
 ################################################################################
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
-  default     = "1.30"
+  default     = "1.31"
   type        = string
 }
 variable "orchestrator_version" {
