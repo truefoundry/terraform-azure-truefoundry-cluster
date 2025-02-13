@@ -25,7 +25,7 @@ variable "kubernetes_version" {
 variable "orchestrator_version" {
   description = "Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes_version until passed explicitly"
   type        = string
-  default     = "1.30"
+  default     = "1.31"
 }
 
 variable "log_analytics_workspace_enabled" {
