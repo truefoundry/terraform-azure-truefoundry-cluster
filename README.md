@@ -65,7 +65,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_name"></a> [name](#input\_name) | Name of the cluster. If use\_existing\_cluster is enabled name is used to fetch details of existing cluster | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | Network plugin to use for cluster | `string` | `"kubenet"` | no |
 | <a name="input_oidc_issuer_enabled"></a> [oidc\_issuer\_enabled](#input\_oidc\_issuer\_enabled) | Enable OIDC for the cluster | `bool` | `true` | no |
-| <a name="input_orchestrator_version"></a> [orchestrator\_version](#input\_orchestrator\_version) | Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes\_version until passed explicitly | `string` | `"1.30"` | no |
+| <a name="input_orchestrator_version"></a> [orchestrator\_version](#input\_orchestrator\_version) | Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes\_version until passed explicitly | `string` | `"1.31"` | no |
 | <a name="input_pod_cidr"></a> [pod\_cidr](#input\_pod\_cidr) | CIDR of the pod in cluster | `string` | `"10.244.0.0/16"` | no |
 | <a name="input_private_cluster_enabled"></a> [private\_cluster\_enabled](#input\_private\_cluster\_enabled) | Private cluster | `bool` | `false` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group | `string` | n/a | yes |
