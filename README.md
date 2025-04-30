@@ -35,6 +35,16 @@ Truefoundry Azure Cluster Module
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_ip_ranges"></a> [allowed\_ip\_ranges](#input\_allowed\_ip\_ranges) | Allowed IP ranges to connect to the cluster | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
+| <a name="input_autoscaler_profile_expander"></a> [autoscaler\_profile\_expander](#input\_autoscaler\_profile\_expander) | Expander for the autoscaler profile | `string` | `"least-waste"` | no |
+| <a name="input_autoscaler_profile_max_graceful_termination_sec"></a> [autoscaler\_profile\_max\_graceful\_termination\_sec](#input\_autoscaler\_profile\_max\_graceful\_termination\_sec) | Max graceful termination sec for the autoscaler profile | `number` | `180` | no |
+| <a name="input_autoscaler_profile_max_node_provisioning_time"></a> [autoscaler\_profile\_max\_node\_provisioning\_time](#input\_autoscaler\_profile\_max\_node\_provisioning\_time) | Max node provisioning time for the autoscaler profile | `string` | `"5m"` | no |
+| <a name="input_autoscaler_profile_max_unready_nodes"></a> [autoscaler\_profile\_max\_unready\_nodes](#input\_autoscaler\_profile\_max\_unready\_nodes) | Max unready nodes for the autoscaler profile | `number` | `0` | no |
+| <a name="input_autoscaler_profile_scale_down_delay_after_add"></a> [autoscaler\_profile\_scale\_down\_delay\_after\_add](#input\_autoscaler\_profile\_scale\_down\_delay\_after\_add) | Scale down delay after add for the autoscaler profile | `string` | `"2m"` | no |
+| <a name="input_autoscaler_profile_scale_down_delay_after_delete"></a> [autoscaler\_profile\_scale\_down\_delay\_after\_delete](#input\_autoscaler\_profile\_scale\_down\_delay\_after\_delete) | Scale down delay after delete for the autoscaler profile | `string` | `"30s"` | no |
+| <a name="input_autoscaler_profile_scale_down_unneeded"></a> [autoscaler\_profile\_scale\_down\_unneeded](#input\_autoscaler\_profile\_scale\_down\_unneeded) | Scale down unneeded for the autoscaler profile | `string` | `"1m"` | no |
+| <a name="input_autoscaler_profile_scale_down_unready"></a> [autoscaler\_profile\_scale\_down\_unready](#input\_autoscaler\_profile\_scale\_down\_unready) | Scale down unready for the autoscaler profile | `string` | `"2m"` | no |
+| <a name="input_autoscaler_profile_scale_down_utilization_threshold"></a> [autoscaler\_profile\_scale\_down\_utilization\_threshold](#input\_autoscaler\_profile\_scale\_down\_utilization\_threshold) | Scale down utilization threshold for the autoscaler profile | `number` | `0.7` | no |
+| <a name="input_autoscaler_profile_skip_nodes_with_system_pods"></a> [autoscaler\_profile\_skip\_nodes\_with\_system\_pods](#input\_autoscaler\_profile\_skip\_nodes\_with\_system\_pods) | Skip nodes with system pods for the autoscaler profile | `bool` | `true` | no |
 | <a name="input_cluster_autoscaler_diagnostic_enable_override"></a> [cluster\_autoscaler\_diagnostic\_enable\_override](#input\_cluster\_autoscaler\_diagnostic\_enable\_override) | Enable overriding of the cluster autoscaler diagnostic setting name. | `bool` | `false` | no |
 | <a name="input_cluster_autoscaler_diagnostic_override_name"></a> [cluster\_autoscaler\_diagnostic\_override\_name](#input\_cluster\_autoscaler\_diagnostic\_override\_name) | Cluster autoscaler diagnostic setting name. Default is '<cluster-name>-cluster-autoscaler' | `string` | `""` | no |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Whether the cluster is control plane | `bool` | n/a | yes |
@@ -45,6 +55,7 @@ Truefoundry Azure Cluster Module
 | <a name="input_disk_driver_version"></a> [disk\_driver\_version](#input\_disk\_driver\_version) | Version of disk driver. Supported values `v1` and `v2` | `string` | `"v1"` | no |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | Disk size of the initial node pool in GB | `string` | `"100"` | no |
 | <a name="input_dns_ip"></a> [dns\_ip](#input\_dns\_ip) | IP from service CIDR used for internal DNS | `string` | `"10.255.0.10"` | no |
+| <a name="input_enable_autoscaler_profile"></a> [enable\_autoscaler\_profile](#input\_enable\_autoscaler\_profile) | Enable autoscaler profile for the cluster | `bool` | `true` | no |
 | <a name="input_enable_blob_driver"></a> [enable\_blob\_driver](#input\_enable\_blob\_driver) | Enable blob storage provider | `bool` | `true` | no |
 | <a name="input_enable_disk_driver"></a> [enable\_disk\_driver](#input\_enable\_disk\_driver) | Enable disk storage provider | `bool` | `true` | no |
 | <a name="input_enable_file_driver"></a> [enable\_file\_driver](#input\_enable\_file\_driver) | Enable file storage provider | `bool` | `true` | no |
