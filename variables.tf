@@ -248,7 +248,7 @@ variable "autoscaler_profile_max_graceful_termination_sec" {
 variable "autoscaler_profile_max_node_provisioning_time" {
   description = "Max node provisioning time for the autoscaler profile"
   type        = string
-  default     = "5m"
+  default     = "15m"
 }
 
 variable "autoscaler_profile_max_unready_nodes" {
