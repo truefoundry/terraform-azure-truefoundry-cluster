@@ -224,6 +224,76 @@ variable "max_pods_per_node" {
 }
 
 ################################################################################
+# Autoscaling configurations
+################################################################################
+
+variable "enable_autoscaler_profile" {
+  description = "Enable autoscaler profile for the cluster"
+  type        = bool
+  default     = true
+}
+
+variable "autoscaler_profile_expander" {
+  description = "Expander for the autoscaler profile"
+  type        = string
+  default     = "least-waste"
+}
+
+variable "autoscaler_profile_max_graceful_termination_sec" {
+  description = "Max graceful termination sec for the autoscaler profile"
+  type        = number
+  default     = 180
+}
+
+variable "autoscaler_profile_max_node_provisioning_time" {
+  description = "Max node provisioning time for the autoscaler profile"
+  type        = string
+  default     = "5m"
+}
+
+variable "autoscaler_profile_max_unready_nodes" {
+  description = "Max unready nodes for the autoscaler profile"
+  type        = number
+  default     = 0
+}
+
+variable "autoscaler_profile_scale_down_delay_after_add" {
+  description = "Scale down delay after add for the autoscaler profile"
+  type        = string
+  default     = "2m"
+}
+
+variable "autoscaler_profile_scale_down_delay_after_delete" {
+  description = "Scale down delay after delete for the autoscaler profile"
+  type        = string
+  default     = "30s"
+}
+
+variable "autoscaler_profile_scale_down_unneeded" {
+  description = "Scale down unneeded for the autoscaler profile"
+  type        = string
+  default     = "1m"
+}
+
+variable "autoscaler_profile_scale_down_unready" {
+  description = "Scale down unready for the autoscaler profile"
+  type        = string
+  default     = "2m"
+}
+
+variable "autoscaler_profile_scale_down_utilization_threshold" {
+  description = "Scale down utilization threshold for the autoscaler profile"
+  type        = number
+  default     = 0.7
+}
+
+variable "autoscaler_profile_skip_nodes_with_system_pods" {
+  description = "Skip nodes with system pods for the autoscaler profile"
+  type        = bool
+  default     = true
+}
+
+################################################################################
 # Network
 ################################################################################
 
