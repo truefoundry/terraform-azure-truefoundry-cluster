@@ -293,6 +293,12 @@ variable "autoscaler_profile_skip_nodes_with_system_pods" {
   default     = true
 }
 
+variable "autoscaler_profile_skip_nodes_with_local_storage" {
+  description = "Skip nodes with pods with local storage, for example, EmptyDir or HostPath"
+  type        = bool
+  default     = false
+}
+
 ################################################################################
 # Network
 ################################################################################

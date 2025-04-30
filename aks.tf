@@ -51,6 +51,7 @@ module "aks" {
   auto_scaler_profile_scale_down_unready               = var.autoscaler_profile_scale_down_unready
   auto_scaler_profile_scale_down_utilization_threshold = var.autoscaler_profile_scale_down_utilization_threshold
   auto_scaler_profile_skip_nodes_with_system_pods      = var.autoscaler_profile_skip_nodes_with_system_pods
+  auto_scaler_profile_skip_nodes_with_local_storage = var.autoscaler_profile_skip_nodes_with_local_storage
 
   # cluster level configurations
   api_server_authorized_ip_ranges            = var.allowed_ip_ranges
