@@ -224,6 +224,82 @@ variable "max_pods_per_node" {
 }
 
 ################################################################################
+# Autoscaling configurations
+################################################################################
+
+variable "enable_autoscaler_profile" {
+  description = "Enable autoscaler profile for the cluster"
+  type        = bool
+  default     = true
+}
+
+variable "autoscaler_profile_expander" {
+  description = "Expander for the autoscaler profile. Possible values are `least-waste`, `priority`, `most-pods` and `random`. Defaults to `least-waste`"
+  type        = string
+  default     = "least-waste"
+}
+
+variable "autoscaler_profile_max_graceful_termination_sec" {
+  description = "Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. Defaults to 180"
+  type        = number
+  default     = 180
+}
+
+variable "autoscaler_profile_max_node_provisioning_time" {
+  description = "Maximum time the autoscaler waits for a node to be provisioned. Defaults to 15 minutes"
+  type        = string
+  default     = "15m"
+}
+
+variable "autoscaler_profile_max_unready_nodes" {
+  description = "Maximum Number of allowed unready nodes. Defaults to 3"
+  type        = number
+  default     = 3
+}
+
+variable "autoscaler_profile_scale_down_delay_after_add" {
+  description = "Scale down delay after add for the autoscaler profile"
+  type        = string
+  default     = "2m"
+}
+
+variable "autoscaler_profile_scale_down_delay_after_delete" {
+  description = "Scale down delay after delete for the autoscaler profile"
+  type        = string
+  default     = "30s"
+}
+
+variable "autoscaler_profile_scale_down_unneeded" {
+  description = "Scale down unneeded for the autoscaler profile"
+  type        = string
+  default     = "1m"
+}
+
+variable "autoscaler_profile_scale_down_unready" {
+  description = "Scale down unready for the autoscaler profile"
+  type        = string
+  default     = "2m"
+}
+
+variable "autoscaler_profile_scale_down_utilization_threshold" {
+  description = "Scale down utilization threshold for the autoscaler profile"
+  type        = number
+  default     = 0.7
+}
+
+variable "autoscaler_profile_skip_nodes_with_system_pods" {
+  description = "Skip nodes with system pods for the autoscaler profile"
+  type        = bool
+  default     = true
+}
+
+variable "autoscaler_profile_skip_nodes_with_local_storage" {
+  description = "Skip nodes with pods with local storage, for example, EmptyDir or HostPath"
+  type        = bool
+  default     = false
+}
+
+################################################################################
 # Network
 ################################################################################
 

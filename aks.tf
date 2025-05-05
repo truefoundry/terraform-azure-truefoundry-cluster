@@ -40,16 +40,18 @@ module "aks" {
   orchestrator_version = var.orchestrator_version
 
   # autoscaler configuration
-  auto_scaler_profile_enabled                          = true
-  auto_scaler_profile_expander                         = "random"
-  auto_scaler_profile_max_graceful_termination_sec     = "180"
-  auto_scaler_profile_max_node_provisioning_time       = "5m"
-  auto_scaler_profile_max_unready_nodes                = 0
-  auto_scaler_profile_scale_down_delay_after_add       = "2m"
-  auto_scaler_profile_scale_down_delay_after_delete    = "30s"
-  auto_scaler_profile_scale_down_unneeded              = "1m"
-  auto_scaler_profile_scale_down_unready               = "2m"
-  auto_scaler_profile_scale_down_utilization_threshold = "0.3"
+  auto_scaler_profile_enabled                          = var.enable_autoscaler_profile
+  auto_scaler_profile_expander                         = var.autoscaler_profile_expander
+  auto_scaler_profile_max_graceful_termination_sec     = var.autoscaler_profile_max_graceful_termination_sec
+  auto_scaler_profile_max_node_provisioning_time       = var.autoscaler_profile_max_node_provisioning_time
+  auto_scaler_profile_max_unready_nodes                = var.autoscaler_profile_max_unready_nodes
+  auto_scaler_profile_scale_down_delay_after_add       = var.autoscaler_profile_scale_down_delay_after_add
+  auto_scaler_profile_scale_down_delay_after_delete    = var.autoscaler_profile_scale_down_delay_after_delete
+  auto_scaler_profile_scale_down_unneeded              = var.autoscaler_profile_scale_down_unneeded
+  auto_scaler_profile_scale_down_unready               = var.autoscaler_profile_scale_down_unready
+  auto_scaler_profile_scale_down_utilization_threshold = var.autoscaler_profile_scale_down_utilization_threshold
+  auto_scaler_profile_skip_nodes_with_system_pods      = var.autoscaler_profile_skip_nodes_with_system_pods
+  auto_scaler_profile_skip_nodes_with_local_storage    = var.autoscaler_profile_skip_nodes_with_local_storage
 
   # cluster level configurations
   api_server_authorized_ip_ranges            = var.allowed_ip_ranges
