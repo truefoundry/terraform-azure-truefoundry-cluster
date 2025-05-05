@@ -234,27 +234,27 @@ variable "enable_autoscaler_profile" {
 }
 
 variable "autoscaler_profile_expander" {
-  description = "Expander for the autoscaler profile"
+  description = "Expander for the autoscaler profile. Possible values are `least-waste`, `priority`, `most-pods` and `random`. Defaults to `least-waste`"
   type        = string
   default     = "least-waste"
 }
 
 variable "autoscaler_profile_max_graceful_termination_sec" {
-  description = "Max graceful termination sec for the autoscaler profile"
+  description = "Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. Defaults to 180"
   type        = number
   default     = 180
 }
 
 variable "autoscaler_profile_max_node_provisioning_time" {
-  description = "Max node provisioning time for the autoscaler profile"
+  description = "Maximum time the autoscaler waits for a node to be provisioned. Defaults to 15 minutes"
   type        = string
   default     = "15m"
 }
 
 variable "autoscaler_profile_max_unready_nodes" {
-  description = "Max unready nodes for the autoscaler profile"
+  description = "Maximum Number of allowed unready nodes. Defaults to 3"
   type        = number
-  default     = 0
+  default     = 3
 }
 
 variable "autoscaler_profile_scale_down_delay_after_add" {
