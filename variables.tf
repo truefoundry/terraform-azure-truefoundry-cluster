@@ -19,13 +19,13 @@ variable "name" {
 ################################################################################
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
-  default     = "1.31"
+  default     = "1.32"
   type        = string
 }
 variable "orchestrator_version" {
   description = "Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes_version until passed explicitly"
   type        = string
-  default     = "1.31"
+  default     = "1.32"
 }
 
 variable "log_analytics_workspace_enabled" {
@@ -66,6 +66,57 @@ variable "cluster_autoscaler_diagnostic_override_name" {
   }
 }
 
+variable "cluster_cost_analysis_enabled" {
+  description = "Enable cluster cost analysis"
+  type        = bool
+  default     = false
+}
+
+variable "cluster_monitor_data_collection_rule_enabled" {
+  description = "Enable cluster monitor data collection rule"
+  type        = bool
+  default     = true
+}
+
+variable "cluster_data_collection_settings" {
+  description = "Cluster data collection settings. `data_collection_interval` - Determines how often the agent collects data. Valid values are 1m - 30m in 1m intervals. Default is 1m. `namespace_filtering_mode_for_data_collection` - Can be 'Include', 'Exclude', or 'Off'. Determines how namespaces are filtered for data collection. `namespaces_for_data_collection` - List of Kubernetes namespaces for data collection based on the filtering mode. `container_log_v2_enabled` - Flag to enable the ContainerLogV2 schema for collecting logs. See more details: https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-data-collection-configure?tabs=cli#configure-dcr-with-azure-portal-1"
+  type = object({
+    data_collection_interval                     = string
+    namespace_filtering_mode_for_data_collection = string
+    namespaces_for_data_collection               = list(string)
+    container_log_v2_enabled                     = bool
+  })
+  default = { "container_log_v2_enabled" : true, "data_collection_interval" : "1m", "namespace_filtering_mode_for_data_collection" : "Off", "namespaces_for_data_collection" : ["kube-system", "gatekeeper-system", "azure-arc"] }
+}
+
+variable "cluster_monitor_data_collection_rule_data_sources_syslog_facilities" {
+  description = "Syslog supported facilities as documented here: https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-sources-syslog"
+  type        = list(string)
+  default     = ["auth", "authpriv", "cron", "daemon", "mark", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp"]
+}
+
+variable "cluster_monitor_data_collection_rule_data_sources_syslog_levels" {
+  description = "List of syslog levels"
+  type        = list(string)
+  default     = ["Debug", "Info", "Notice", "Warning", "Error", "Critical", "Alert", "Emergency"]
+}
+
+variable "cluster_monitor_data_collection_rule_extensions_streams" {
+  description = "An array of container insights table streams. See documentation in DCR for a list of the valid streams and their corresponding table: https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-data-collection-configure?tabs=portal#stream-values-in-dcr"
+  type        = list(string)
+  default     = ["Microsoft-ContainerLog", "Microsoft-ContainerLogV2", "Microsoft-KubeEvents", "Microsoft-KubePodInventory", "Microsoft-KubeNodeInventory", "Microsoft-KubePVInventory", "Microsoft-KubeServices", "Microsoft-KubeMonAgentEvents", "Microsoft-InsightsMetrics", "Microsoft-ContainerInventory", "Microsoft-ContainerNodeInventory", "Microsoft-Perf"]
+}
+
+variable "cluster_monitor_metrics" {
+  description = "Specifies a Prometheus add-on profile for the Kubernetes Cluster object({ annotations_allowed = '(Optional) Specifies a comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric.' labels_allowed = '(Optional) Specifies a Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.' })"
+  type = object({
+    annotations_allowed = optional(string)
+    labels_allowed      = optional(string)
+  })
+  default = null
+}
+
+
 variable "oidc_issuer_enabled" {
   description = "Enable OIDC for the cluster"
   default     = true
@@ -83,6 +134,26 @@ variable "sku_tier" {
   default     = "Standard"
   type        = string
 }
+
+variable "rbac_aad" {
+  description = "Enable RBAC for the cluster"
+  default     = false
+  type        = bool
+}
+
+
+variable "rbac_aad_azure_rbac_enabled" {
+  description = "Enable Azure RBAC for the cluster"
+  default     = false
+  type        = bool
+}
+
+variable "role_based_access_control_enabled" {
+  description = "Enable role based access control for the cluster"
+  default     = true
+  type        = bool
+}
+
 
 ################################################################################
 # Initial Nodepool configurations
@@ -104,6 +175,12 @@ variable "initial_node_pool_max_surge" {
   description = "Max surge in percentage for the intial node pool"
   type        = string
   default     = "10"
+}
+
+variable "initial_node_pool_count" {
+  description = "Count for the initial node pool. Used only when autoscaling is disabled"
+  type        = number
+  default     = 2
 }
 
 variable "initial_node_pool_max_count" {
@@ -227,6 +304,12 @@ variable "max_pods_per_node" {
 # Autoscaling configurations
 ################################################################################
 
+variable "enable_auto_scaling" {
+  description = "Enable auto scaling for the cluster"
+  type        = bool
+  default     = true
+}
+
 variable "enable_autoscaler_profile" {
   description = "Enable autoscaler profile for the cluster"
   type        = bool
@@ -316,7 +399,19 @@ variable "subnet_id" {
 variable "network_plugin" {
   description = "Network plugin to use for cluster"
   type        = string
-  default     = "kubenet"
+  default     = "azure"
+}
+
+variable "network_plugin_mode" {
+  description = "Network plugin mode to use for cluster"
+  type        = string
+  default     = "overlay"
+}
+
+variable "network_data_plane" {
+  description = "Network data plane to use for cluster.Possible values are `azure` and `cilium`"
+  type        = string
+  default     = "azure"
 }
 
 variable "pod_cidr" {
