@@ -25,10 +25,10 @@ locals {
     node_taints = [
       "kubernetes.azure.com/scalesetpriority=spot:NoSchedule"
     ]
-    tags           = local.tags
-    zones          = []
-    vnet_subnet_id = var.subnet_id
-    max_pods       = var.max_pods_per_node
+    tags        = local.tags
+    zones       = []
+    vnet_subnet = { id = var.subnet_id }
+    max_pods    = var.max_pods_per_node
     } if v["enable_spot_pool"] },
     { for k, v in var.cpu_pools : v["name"] => {
       name                    = v["name"]
@@ -46,7 +46,7 @@ locals {
       node_taints             = []
       tags                    = local.tags
       zones                   = []
-      vnet_subnet_id          = var.subnet_id
+      vnet_subnet             = { id = var.subnet_id }
       max_pods                = var.max_pods_per_node
     } if v["enable_on_demand_pool"] },
 
@@ -68,10 +68,10 @@ locals {
         "kubernetes.azure.com/scalesetpriority=spot:NoSchedule",
         "nvidia.com/gpu=Present:NoSchedule"
       ]
-      tags           = local.tags
-      zones          = []
-      vnet_subnet_id = var.subnet_id
-      max_pods       = var.max_pods_per_node
+      tags        = local.tags
+      zones       = []
+      vnet_subnet = { id = var.subnet_id }
+      max_pods    = var.max_pods_per_node
     } if v["enable_spot_pool"] },
     { for k, v in var.gpu_pools : v["name"] => {
       name                    = v["name"]
@@ -89,10 +89,10 @@ locals {
       node_taints = [
         "nvidia.com/gpu=Present:NoSchedule"
       ]
-      tags           = local.tags
-      zones          = []
-      vnet_subnet_id = var.subnet_id
-      max_pods       = var.max_pods_per_node
+      tags        = local.tags
+      zones       = []
+      vnet_subnet = { id = var.subnet_id }
+      max_pods    = var.max_pods_per_node
     } if v["enable_on_demand_pool"] },
     var.control_plane ? { "tfycp" = {
       name                    = "tfycp"
@@ -113,10 +113,10 @@ locals {
       node_labels = {
         "class.truefoundry.com/component" = "control-plane"
       }
-      tags           = local.tags
-      zones          = []
-      vnet_subnet_id = var.subnet_id
-      max_pods       = var.max_pods_per_node
+      tags        = local.tags
+      zones       = []
+      vnet_subnet = { id = var.subnet_id }
+      max_pods    = var.max_pods_per_node
     } } : null,
     var.critical_node_pool_enabled ? { "critical" = {
       name                    = "critical"
@@ -137,10 +137,10 @@ locals {
       node_labels = {
         "class.truefoundry.com/component" = "critical"
       }
-      tags           = local.tags
-      zones          = []
-      vnet_subnet_id = var.subnet_id
-      max_pods       = var.max_pods_per_node
+      tags        = local.tags
+      zones       = []
+      vnet_subnet = { id = var.subnet_id }
+      max_pods    = var.max_pods_per_node
   } } : null)
 
   log_analytics_workspace_name = var.log_analytics_workspace_enable_override ? var.log_analytics_workspace_override_name : substr("${var.name}-log-analytics", 0, 63)
