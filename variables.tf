@@ -307,7 +307,7 @@ variable "max_pods_per_node" {
 variable "enable_auto_scaling" {
   description = "Enable auto scaling for the cluster"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "enable_autoscaler_profile" {
