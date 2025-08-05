@@ -15,7 +15,7 @@ cluster_monitor_data_collection_rule_enabled = false
     terraform init -upgrade
     terraform apply
     ```
-4. Once done you can also move to cluster version 1.32 by removing the variable `cluster_version` if passed from outside.
+4. Once done you can also move to cluster version 1.32 by removing the variable `kubernetes_version` and `orchestrator_version` if passed from outside.
    
 
 ## Upgrade guide from 0.5.x to 0.6.x
