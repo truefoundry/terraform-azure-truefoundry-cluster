@@ -31,6 +31,7 @@ module "aks" {
   monitor_data_collection_rule_data_sources_syslog_facilities = var.cluster_monitor_data_collection_rule_data_sources_syslog_facilities
   monitor_data_collection_rule_data_sources_syslog_levels     = var.cluster_monitor_data_collection_rule_data_sources_syslog_levels
   monitor_data_collection_rule_extensions_streams             = var.cluster_monitor_data_collection_rule_extensions_streams
+  data_collection_settings                                    = var.cluster_data_collection_settings
   monitor_metrics                                             = var.cluster_monitor_metrics
 
   agents_pool_name      = var.initial_node_pool_name
