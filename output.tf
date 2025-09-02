@@ -26,6 +26,7 @@ output "cluster_name" {
 output "cluster_identity" {
   description = "The `azurerm_kubernetes_cluster`'s `identity` block."
   value       = var.use_existing_cluster ? data.azurerm_kubernetes_cluster.cluster[0].identity : module.aks[0].cluster_identity
+  sensitive   = true
 }
 
 output "cluster_host" {
