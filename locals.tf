@@ -8,6 +8,8 @@ locals {
     },
     var.tags
   )
+
+  # Upgrade setting are kept as per default values and they are only used for on-demand node pools.
   node_pools = merge({ for k, v in var.cpu_pools : "${v["name"]}sp" => {
     name                    = "${v["name"]}sp"
     node_count              = null
@@ -48,6 +50,11 @@ locals {
       zones                   = []
       vnet_subnet             = { id = var.subnet_id }
       max_pods                = var.max_pods_per_node
+      upgrade_settings = {
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
+        node_soak_duration_in_minutes = 0
+      }
     } if v["enable_on_demand_pool"] },
 
     { for k, v in var.gpu_pools : "${v["name"]}sp" => {
@@ -93,6 +100,11 @@ locals {
       zones       = []
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
+      upgrade_settings = {
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
+        node_soak_duration_in_minutes = 0
+      }
     } if v["enable_on_demand_pool"] },
     var.control_plane ? { "tfycp" = {
       name                    = "tfycp"
@@ -117,6 +129,11 @@ locals {
       zones       = []
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
+      upgrade_settings = {
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
+        node_soak_duration_in_minutes = 0
+      }
     } } : null,
     var.critical_node_pool_enabled ? { "critical" = {
       name                    = "critical"
@@ -141,6 +158,11 @@ locals {
       zones       = []
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
+      upgrade_settings = {
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
+        node_soak_duration_in_minutes = 0
+      }
   } } : null)
 
   log_analytics_workspace_name = var.log_analytics_workspace_enable_override ? var.log_analytics_workspace_override_name : substr("${var.name}-log-analytics", 0, 63)
