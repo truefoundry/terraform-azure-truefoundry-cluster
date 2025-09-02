@@ -51,8 +51,8 @@ locals {
       vnet_subnet             = { id = var.subnet_id }
       max_pods                = var.max_pods_per_node
       upgrade_settings = {
-        max_surge = "10%"
-        drain_timeout_in_minutes = 0
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
         node_soak_duration_in_minutes = 0
       }
     } if v["enable_on_demand_pool"] },
@@ -101,8 +101,8 @@ locals {
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
       upgrade_settings = {
-        max_surge = "10%"
-        drain_timeout_in_minutes = 0
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
         node_soak_duration_in_minutes = 0
       }
     } if v["enable_on_demand_pool"] },
@@ -130,8 +130,8 @@ locals {
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
       upgrade_settings = {
-        max_surge = "10%"
-        drain_timeout_in_minutes = 0
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
         node_soak_duration_in_minutes = 0
       }
     } } : null,
@@ -159,8 +159,8 @@ locals {
       vnet_subnet = { id = var.subnet_id }
       max_pods    = var.max_pods_per_node
       upgrade_settings = {
-        max_surge = "10%"
-        drain_timeout_in_minutes = 0
+        max_surge                     = "10%"
+        drain_timeout_in_minutes      = 0
         node_soak_duration_in_minutes = 0
       }
   } } : null)
