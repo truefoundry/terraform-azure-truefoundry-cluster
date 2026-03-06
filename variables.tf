@@ -19,9 +19,15 @@ variable "name" {
 ################################################################################
 variable "kubernetes_version" {
   description = "Version of the kubernetes engine"
-  default     = "1.33"
+  default     = "1.34"
   type        = string
+
+  validation {
+    condition     = contains(["1.32", "1.33", "1.34", "1.35"], var.kubernetes_version)
+    error_message = "kubernetes_version must be one of: 1.32, 1.33, 1.34, 1.35"
+  }
 }
+
 variable "orchestrator_version" {
   description = "Kubernetes version for the orchestration layer (nodes). By default it will be derived with var.kubernetes_version until passed explicitly"
   type        = string
