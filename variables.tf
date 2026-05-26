@@ -263,6 +263,12 @@ variable "control_plane_node_min_count" {
   default     = 0
 }
 
+variable "control_plane_node_count" {
+  description = "Node count for the control plane node pool. Used only when autoscaling is disabled"
+  type        = number
+  default     = 2
+}
+
 variable "control_plane_enable_auto_scaling" {
   description = "Enable auto scaling for the control plane node pool"
   type        = bool
@@ -297,6 +303,12 @@ variable "critical_node_min_count" {
   description = "Min count in the critical node pool"
   type        = number
   default     = 0
+}
+
+variable "critical_node_count" {
+  description = "Node count for the critical node pool. Used only when autoscaling is disabled"
+  type        = number
+  default     = 2
 }
 
 variable "critical_enable_auto_scaling" {
