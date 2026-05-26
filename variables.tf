@@ -251,6 +251,30 @@ variable "control_plane_instance_type" {
   type        = string
 }
 
+variable "control_plane_node_max_count" {
+  description = "Max count in the control plane node pool"
+  type        = number
+  default     = 4
+}
+
+variable "control_plane_node_min_count" {
+  description = "Min count in the control plane node pool"
+  type        = number
+  default     = 0
+}
+
+variable "control_plane_enable_auto_scaling" {
+  description = "Enable auto scaling for the control plane node pool"
+  type        = bool
+  default     = true
+}
+
+variable "control_plane_os_disk_size_gb" {
+  description = "OS disk size of the control plane node pool in GB"
+  type        = number
+  default     = 100
+}
+
 variable "critical_node_pool_enabled" {
   description = "Enable Critical nodepool for the cluster"
   default     = true
@@ -261,7 +285,30 @@ variable "critical_node_pool_instance_type" {
   description = "Critical nodepool instance type"
   default     = "Standard_D4s_v5"
   type        = string
+}
 
+variable "critical_node_max_count" {
+  description = "Max count in the critical node pool"
+  type        = number
+  default     = 2
+}
+
+variable "critical_node_min_count" {
+  description = "Min count in the critical node pool"
+  type        = number
+  default     = 0
+}
+
+variable "critical_enable_auto_scaling" {
+  description = "Enable auto scaling for the critical node pool"
+  type        = bool
+  default     = true
+}
+
+variable "critical_os_disk_size_gb" {
+  description = "OS disk size of the critical node pool in GB"
+  type        = number
+  default     = 100
 }
 
 variable "enable_storage_profile" {
