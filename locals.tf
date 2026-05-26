@@ -108,9 +108,9 @@ locals {
     } if v["enable_on_demand_pool"] },
     var.control_plane ? { "tfycp" = {
       name                    = "tfycp"
-      node_count              = null
-      max_count               = var.control_plane_node_max_count
-      min_count               = var.control_plane_node_min_count
+      node_count              = var.control_plane_enable_auto_scaling ? null : var.control_plane_node_count
+      max_count               = var.control_plane_enable_auto_scaling ? var.control_plane_node_max_count : null
+      min_count               = var.control_plane_enable_auto_scaling ? var.control_plane_node_min_count : null
       os_disk_size_gb         = var.control_plane_os_disk_size_gb
       priority                = "Regular"
       vm_size                 = var.control_plane_instance_type
@@ -137,9 +137,9 @@ locals {
     } } : null,
     var.critical_node_pool_enabled ? { "critical" = {
       name                    = "critical"
-      node_count              = null
-      max_count               = var.critical_node_max_count
-      min_count               = var.critical_node_min_count
+      node_count              = var.critical_enable_auto_scaling ? null : var.critical_node_count
+      max_count               = var.critical_enable_auto_scaling ? var.critical_node_max_count : null
+      min_count               = var.critical_enable_auto_scaling ? var.critical_node_min_count : null
       os_disk_size_gb         = var.critical_os_disk_size_gb
       priority                = "Regular"
       vm_size                 = var.critical_node_pool_instance_type
