@@ -247,7 +247,7 @@ variable "control_plane" {
 
 variable "control_plane_instance_type" {
   description = "Control plane nodepool instance type"
-  default     = "Standard_D4s_v5"
+  default     = "Standard_D8s_v5"
   type        = string
 }
 
